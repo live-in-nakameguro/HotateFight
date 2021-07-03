@@ -19,6 +19,8 @@ public class ChangeScene : MonoBehaviour
 	{
 		if (Input.GetKeyDown(keyDownCommand)) // enterが押された場合
 		{
+			Debug.Log("keyDownCommand:"+ keyDownCommand);
+			Debug.Log("sceneName:" + sceneName);
 			SceneManager.LoadScene(sceneName);// シーンをロードする
 		}
 
