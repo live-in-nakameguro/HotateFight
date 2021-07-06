@@ -324,7 +324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyDownCommand: return
-  sceneName: TestScenes
+  sceneName: MenuScene
 --- !u!1 &1026724471
 GameObject:
   m_ObjectHideFlags: 0
