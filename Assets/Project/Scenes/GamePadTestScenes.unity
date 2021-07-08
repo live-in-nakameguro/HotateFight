@@ -288,6 +288,8 @@ MonoBehaviour:
   inJumping: 0
   onGround: 1
   rb: {fileID: 684281276}
+  v: 0
+  h: 0
 --- !u!1001 &688270477
 PrefabInstance:
   m_ObjectHideFlags: 0
