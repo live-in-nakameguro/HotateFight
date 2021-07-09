@@ -27,6 +27,11 @@ namespace Hotate.Damage
         // オブジェクトの種類
         public DamageTypes damageType = DamageTypes.NoType;
 
+        /// <summary>
+        /// ダメージを受けた際のホタテの挙動
+        /// </summary>
+        /// <param name="rb">ホタテのRigidbody</param>
+        /// <param name="transform">ホタテのTransform</param>
         public virtual void HotateMotion(Rigidbody rb, Transform transform)  //virtualを付与
         {
             Debug.Log("モーション設定なし");

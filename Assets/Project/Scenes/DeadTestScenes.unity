@@ -668,6 +668,7 @@ MonoBehaviour:
   damageType: 1
   sound1: {fileID: 8300000, guid: 8207fcfa120837449922e023d8ee8b2a, type: 3}
   childIndex: 0
+  activeTime: 1
 --- !u!82 &1146938806
 AudioSource:
   m_ObjectHideFlags: 0
@@ -922,7 +923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageNum: 10
-  invincibleTime: 1.5
+  invincibleTime: 5
   damageType: 0
 --- !u!154 &1629849732
 TerrainCollider:

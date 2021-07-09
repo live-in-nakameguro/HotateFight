@@ -14,7 +14,8 @@ namespace Hotate.Damage
         // 親オブジェクトの子供の番号（上から数える）
         [SerializeField] int childIndex = 0;
 
-        bool isInvokeAlive = false;
+        // 子オブジェクトを表示する時間
+        [SerializeField] float activeTime = 1.0f;
 
         void Start()
         {
@@ -24,23 +25,48 @@ namespace Hotate.Damage
 
         void OnCollisionEnter(Collision col)
         {
+            ExplosionTriger(col);
+        }
+
+        /// <summary>
+        /// 爆発の演出を表示するかを判断する
+        /// </summary>
+        /// <param name="col">ホタテに接触したCollision</param>
+        void ExplosionTriger(Collision col)
+        {
             if (col.gameObject.tag == "Player")
             {
-                if (!isInvokeAlive) {
-                    isInvokeAlive = true;
-                    audioSource.PlayOneShot(sound1);
-                    // 炎の演出をアクティブにする。
-                    transform.GetChild(childIndex).gameObject.SetActive(true);
-                    Invoke(nameof(SetActive), 1.0f);
-                }
+                ExplosionEffect(col);
             }
         }
 
-        void SetActive()
+        /// <summary>
+        /// 爆発の演出を表示する。
+        /// </summary>
+        /// <param name="col">ホタテに接触したCollision</param>
+        void ExplosionEffect(Collision col)
         {
-            // 炎の演出をアクティブにする。
+            audioSource.PlayOneShot(sound1);
+            StartChildActive();
+        }
+
+        /// <summary>
+        /// 子オブジェクトを一定時間表示する。
+        /// </summary>
+        void StartChildActive()
+        {
+            // 炎の演出を表示する。
+            transform.GetChild(childIndex).gameObject.SetActive(true);
+            Invoke(nameof(EndChildActive), activeTime);
+        }
+
+        /// <summary>
+        /// 子オブジェクトを非表示にする。（Invokeで使用）
+        /// </summary>
+        void EndChildActive()
+        {
+            // 炎の演出を非表示にする。
             transform.GetChild(childIndex).gameObject.SetActive(false);
-            isInvokeAlive = false;
         }
 
         public override void HotateMotion(Rigidbody rb, Transform transform)  //overrideを付与
