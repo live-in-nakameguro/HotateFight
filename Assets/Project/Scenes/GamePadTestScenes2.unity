@@ -183,6 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90b144f5229638e47bd7bf60682b36bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamepadNumber: 1
   horizontalRotNode: {fileID: 1081771784}
   verticalRotNode: {fileID: 851490099}
   dollyNode: {fileID: 1207639775}
@@ -231,6 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90b144f5229638e47bd7bf60682b36bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamepadNumber: 2
   horizontalRotNode: {fileID: 1034958339}
   verticalRotNode: {fileID: 1792581521}
   dollyNode: {fileID: 1148008434}
@@ -461,6 +463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 684281279}
+  gamepadNumber: 1
   inJumping: 0
   onGround: 1
   rb: {fileID: 684281276}
@@ -595,6 +598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 798903904}
+  gamepadNumber: 2
   inJumping: 0
   onGround: 1
   rb: {fileID: 798903906}
