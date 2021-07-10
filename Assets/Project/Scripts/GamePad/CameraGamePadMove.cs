@@ -4,6 +4,8 @@ using Gamepad.Config;
 
 public class CameraGamePadMove: MonoBehaviour
 {
+    //GamepadNumberの指定(0を選択した場合、すべてのゲームパッドで操作可能になる。)
+    [SerializeField] int gamepadNumber = 0;
 
     [SerializeField] Transform horizontalRotNode;
     [SerializeField] Transform verticalRotNode;
@@ -22,19 +24,19 @@ public class CameraGamePadMove: MonoBehaviour
     {
         float horizontalAngle = horizontalRotNode.localRotation.eulerAngles.y;
 
-        if (Input.GetAxis(GamepadButtonConfig.RIGHT_STICK_HORI) >= (GamepadButtonConfig.RIGHT_STICK_HORI_MAX * GamepadButtonConfig.FAST_VALUE_FOR_STICK))
+        if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.RIGHT_STICK_HORI)) >= (GamepadButtonConfig.RIGHT_STICK_HORI_MAX * GamepadButtonConfig.FAST_VALUE_FOR_STICK))
             horizontalRotNode.localRotation = Quaternion.Euler(new Vector3(0, horizontalAngle + GamepadCameraConfig.HORIZONTAL_CAMERA_SPEED, 0));
 
-        else if (Input.GetAxis(GamepadButtonConfig.RIGHT_STICK_HORI) <= (GamepadButtonConfig.RIGHT_STICK_HORI_MIN * GamepadButtonConfig.FAST_VALUE_FOR_STICK))
+        else if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.RIGHT_STICK_HORI)) <= (GamepadButtonConfig.RIGHT_STICK_HORI_MIN * GamepadButtonConfig.FAST_VALUE_FOR_STICK))
             horizontalRotNode.localRotation = Quaternion.Euler(new Vector3(0, horizontalAngle - GamepadCameraConfig.HORIZONTAL_CAMERA_SPEED, 0));
 
-        else if (Input.GetAxis(GamepadButtonConfig.RIGHT_STICK_HORI) >= (GamepadButtonConfig.RIGHT_STICK_HORI_MAX * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
+        else if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.RIGHT_STICK_HORI)) >= (GamepadButtonConfig.RIGHT_STICK_HORI_MAX * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
             horizontalRotNode.localRotation = Quaternion.Euler(new Vector3(0, horizontalAngle + GamepadCameraConfig.HORIZONTAL_CAMERA_LOW_SPEED, 0));
 
-        else if (Input.GetAxis(GamepadButtonConfig.RIGHT_STICK_HORI) <= (GamepadButtonConfig.RIGHT_STICK_HORI_MIN * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
+        else if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.RIGHT_STICK_HORI)) <= (GamepadButtonConfig.RIGHT_STICK_HORI_MIN * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
             horizontalRotNode.localRotation = Quaternion.Euler(new Vector3(0, horizontalAngle - GamepadCameraConfig.HORIZONTAL_CAMERA_LOW_SPEED, 0));
         
-        else if (Input.GetKeyDown(GamepadButtonConfig.BUTTON_R3))
+        else if (Input.GetKeyDown(SetGamepadNumber(GamepadButtonConfig.BUTTON_R3)))
             //カメラリセット
             horizontalRotNode.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
     }
@@ -64,17 +66,28 @@ public class CameraGamePadMove: MonoBehaviour
             }
         }
 
-        if (Input.GetAxis(GamepadButtonConfig.RIGHT_STICK_VER) >= (GamepadButtonConfig.RIGHT_STICK_VER_MAX * GamepadButtonConfig.FAST_VALUE_FOR_STICK))
+        if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.RIGHT_STICK_VER)) >= (GamepadButtonConfig.RIGHT_STICK_VER_MAX * GamepadButtonConfig.FAST_VALUE_FOR_STICK))
             UpOrDown(GamepadCameraConfig.VERTICAL_CAMERA_SPEED, true);
 
-        else if (Input.GetAxis(GamepadButtonConfig.RIGHT_STICK_VER) <= (GamepadButtonConfig.RIGHT_STICK_VER_MIN * GamepadButtonConfig.FAST_VALUE_FOR_STICK))
+        else if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.RIGHT_STICK_VER)) <= (GamepadButtonConfig.RIGHT_STICK_VER_MIN * GamepadButtonConfig.FAST_VALUE_FOR_STICK))
             UpOrDown(GamepadCameraConfig.VERTICAL_CAMERA_SPEED, false);
 
-        else if (Input.GetAxis(GamepadButtonConfig.RIGHT_STICK_VER) >= (GamepadButtonConfig.RIGHT_STICK_VER_MAX * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
+        else if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.RIGHT_STICK_VER)) >= (GamepadButtonConfig.RIGHT_STICK_VER_MAX * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
             UpOrDown(GamepadCameraConfig.VERTICAL_CAMERA_LOW_SPEED, true);
 
-        else if (Input.GetAxis(GamepadButtonConfig.RIGHT_STICK_VER) <= (GamepadButtonConfig.RIGHT_STICK_VER_MIN * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
+        else if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.RIGHT_STICK_VER)) <= (GamepadButtonConfig.RIGHT_STICK_VER_MIN * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
             UpOrDown(GamepadCameraConfig.VERTICAL_CAMERA_SPEED, false);
+    }
+
+    string SetGamepadNumber(string gamepadKey)
+    {
+        string gamepadNumberStr = "";
+        if (gamepadNumber != 0)
+        {
+            gamepadNumberStr = $" {gamepadNumber}";
+        }
+        Debug.Log(string.Format(gamepadKey, gamepadNumberStr));
+        return string.Format(gamepadKey, gamepadNumberStr);
     }
 
     /*ズームの設定

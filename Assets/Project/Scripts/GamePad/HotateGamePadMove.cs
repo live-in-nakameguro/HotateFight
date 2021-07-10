@@ -8,6 +8,9 @@ public class HotateGamePadMove : MonoBehaviour
     //操作したいAnimationControllerを持ったGameObjectを割り当てる
     [SerializeField]  Animator _animator;
 
+    //GamepadNumberの指定(0を選択した場合、すべてのゲームパッドで操作可能になる。)
+    [SerializeField] int gamepadNumber = 0;
+
     //キャラクターの操作状態を管理するフラグ
     [SerializeField] bool inJumping = false;
     [SerializeField] bool onGround = true;
@@ -23,22 +26,22 @@ public class HotateGamePadMove : MonoBehaviour
     void Update()
     {
         //左スティックの左右で方向転換
-        if (Input.GetAxis(GamepadButtonConfig.LEFT_STICK_VER) >= (GamepadButtonConfig.LEFT_STICK_VER_MAX * GamepadButtonConfig.FAST_VALUE_FOR_STICK))
+        if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.LEFT_STICK_VER)) >= (GamepadButtonConfig.LEFT_STICK_VER_MAX * GamepadButtonConfig.FAST_VALUE_FOR_STICK))
         {
             v = Time.deltaTime * GamepadHotateConfig.DASH_SPPED;
             _animator.SetBool("Running", true);
         }
-        else if (Input.GetAxis(GamepadButtonConfig.LEFT_STICK_VER) <= (GamepadButtonConfig.LEFT_STICK_VER_MIN * GamepadButtonConfig.FAST_VALUE_FOR_STICK))
+        else if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.LEFT_STICK_VER)) <= (GamepadButtonConfig.LEFT_STICK_VER_MIN * GamepadButtonConfig.FAST_VALUE_FOR_STICK))
         {
             v = -Time.deltaTime * GamepadHotateConfig.DASH_SPPED;
             _animator.SetBool("Running", true);
         }
-        else if (Input.GetAxis(GamepadButtonConfig.LEFT_STICK_VER) >= (GamepadButtonConfig.LEFT_STICK_VER_MAX * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
+        else if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.LEFT_STICK_VER)) >= (GamepadButtonConfig.LEFT_STICK_VER_MAX * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
         {
             v = Time.deltaTime * GamepadHotateConfig.WALK_SPPED;
             _animator.SetBool("Running", true);
         }
-        else if (Input.GetAxis(GamepadButtonConfig.LEFT_STICK_VER) <= (GamepadButtonConfig.LEFT_STICK_VER_MIN * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
+        else if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.LEFT_STICK_VER)) <= (GamepadButtonConfig.LEFT_STICK_VER_MIN * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
         {
             v = -Time.deltaTime * GamepadHotateConfig.WALK_SPPED;
             _animator.SetBool("Running", true);
@@ -56,7 +59,8 @@ public class HotateGamePadMove : MonoBehaviour
         if (onGround)
         {
             //スペースボタンでジャンプする
-            if (Input.GetKeyDown(GamepadButtonConfig.BUTTON_B))
+            //if (Input.GetKeyDown(GamepadButtonConfig.BUTTON_B))
+            if (Input.GetKeyDown(SetGamepadNumber(GamepadButtonConfig.BUTTON_B)))
             {
                 inJumping = true;
                 onGround = false;
@@ -66,10 +70,10 @@ public class HotateGamePadMove : MonoBehaviour
         }
 
         //左スティックの左右で方向転換
-        if (Input.GetAxis(GamepadButtonConfig.LEFT_STICK_HORI) >= (GamepadButtonConfig.LEFT_STICK_HORI_MAX * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
+        if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.LEFT_STICK_HORI)) >= (GamepadButtonConfig.LEFT_STICK_HORI_MAX * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
             h = Time.deltaTime * GamepadHotateConfig.ANGLE_CHAGE_SPPED;
 
-        else if (Input.GetAxis(GamepadButtonConfig.LEFT_STICK_HORI) <= (GamepadButtonConfig.LEFT_STICK_HORI_MIN * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
+        else if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.LEFT_STICK_HORI)) <= (GamepadButtonConfig.LEFT_STICK_HORI_MIN * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
             h = -Time.deltaTime * GamepadHotateConfig.ANGLE_CHAGE_SPPED;
 
         else
@@ -94,4 +98,15 @@ public class HotateGamePadMove : MonoBehaviour
             transform.rotation = Quaternion.Euler(0.0f, current_y, 0.0f);
         }
     }
+
+    string SetGamepadNumber(string gamepadKey)
+    {
+        string gamepadNumberStr = "";
+        if (gamepadNumber != 0) 
+        {
+            gamepadNumberStr = $" {gamepadNumber}";
+        }
+        Debug.Log(string.Format(gamepadKey, gamepadNumberStr));
+        return string.Format(gamepadKey, gamepadNumberStr);
+    } 
 }
