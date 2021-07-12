@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - DamageSource
+  - CharacterSelect
   layers:
   - Default
   - TransparentFX
@@ -40,6 +41,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Back
+    uniqueID: 75924909
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Front
+    uniqueID: 3439071093
     locked: 0
