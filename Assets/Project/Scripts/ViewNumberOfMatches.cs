@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using GameStartRule;
+using GameScenes.GameStartRule;
 
 public class ViewNumberOfMatches : MonoBehaviour
 {
@@ -10,7 +10,8 @@ public class ViewNumberOfMatches : MonoBehaviour
 
     private void Start()
     {
-        TextFrame.text = "Round: " + ChageNumberOfMatches.numberOfMatches.ToString();
+        //シーンに変数を渡せるかのテストをするための仮の文字です。
+        TextFrame.text = "Round: " + GameStartRule.numberOfMatches.ToString();
     }
     
 }

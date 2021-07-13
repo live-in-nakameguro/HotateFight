@@ -2,24 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using GameScenes.Config;
 
-namespace GameStartRule
+namespace GameScenes.GameStartRule
 {
-    public class ChageNumberOfMatches : MonoBehaviour
+    public class GameStartRule : MonoBehaviour
     {
         public Text TextFrame;
 
-        public static int numberOfMatches = 3;
-
-        private int maxNumberOfMatches = 99;
-        private int minNumberOfMatches = 1;
+        public static int numberOfMatches = GameStartRuleConfig.NUMBER_OF_MATCHES;
 
         public void countDownMatches()
         {
             numberOfMatches -= 1;
-            if (numberOfMatches < minNumberOfMatches)
+            if (numberOfMatches < GameStartRuleConfig.MIN_NUMBER_OF_MATCHES)
             {
-                numberOfMatches = maxNumberOfMatches;
+                numberOfMatches = GameStartRuleConfig.MAX_NUMBER_OF_MATCHES;
             }
             TextFrame.text = numberOfMatches.ToString();
         }
@@ -27,9 +25,9 @@ namespace GameStartRule
         public void countUpMatches()
         {
             numberOfMatches += 1;
-            if (numberOfMatches > maxNumberOfMatches)
+            if (numberOfMatches > GameStartRuleConfig.MAX_NUMBER_OF_MATCHES)
             {
-                numberOfMatches = minNumberOfMatches;
+                numberOfMatches = GameStartRuleConfig.MIN_NUMBER_OF_MATCHES;
             }
             TextFrame.text = numberOfMatches.ToString();
         }
