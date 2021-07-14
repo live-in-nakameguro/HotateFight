@@ -10,19 +10,14 @@ public class ChangeSceneByKeyboard : MonoBehaviour
 
 	private bool firstPush = false;
 
-	// Use this for initialization
-	void Start()
-	{
-
-	}
-
 	// Update is called once per frame
 	void Update()
 	{
 		if (Input.GetKeyDown(keyDownCommand))
 		{
 			if (!firstPush)
-            {
+			{
+				firstPush = true;
 				Debug.Log("keyDownCommand:" + keyDownCommand);
 				Debug.Log("sceneName:" + sceneName);
 				SceneManager.LoadScene(sceneName);// シーンをロードする

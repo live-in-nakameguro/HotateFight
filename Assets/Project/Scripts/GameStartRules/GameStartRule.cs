@@ -3,34 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using GameScenes.Config;
+using GameScenes.SettingAndResultBattle;
 
-namespace GameScenes.GameStartRule
+public class GameStartRule : MonoBehaviour
 {
-    public class GameStartRule : MonoBehaviour
+    public Text TextFrame;
+
+    private int numberOfMatches = BattleSetting.getNumberOfMatches();
+
+    public void countDownMatches()
     {
-        public Text TextFrame;
-
-        public static int numberOfMatches = GameStartRuleConfig.NUMBER_OF_MATCHES;
-
-        public void countDownMatches()
+        numberOfMatches -= 1;
+        if (numberOfMatches < GameStartRuleConfig.MIN_NUMBER_OF_MATCHES)
         {
-            numberOfMatches -= 1;
-            if (numberOfMatches < GameStartRuleConfig.MIN_NUMBER_OF_MATCHES)
-            {
-                numberOfMatches = GameStartRuleConfig.MAX_NUMBER_OF_MATCHES;
-            }
-            TextFrame.text = numberOfMatches.ToString();
+            numberOfMatches = GameStartRuleConfig.MAX_NUMBER_OF_MATCHES;
         }
-
-        public void countUpMatches()
-        {
-            numberOfMatches += 1;
-            if (numberOfMatches > GameStartRuleConfig.MAX_NUMBER_OF_MATCHES)
-            {
-                numberOfMatches = GameStartRuleConfig.MIN_NUMBER_OF_MATCHES;
-            }
-            TextFrame.text = numberOfMatches.ToString();
-        }
-
+        BattleSetting.setNumberOfMatches(numberOfMatches);
+        TextFrame.text = numberOfMatches.ToString();
     }
+
+    public void countUpMatches()
+    {
+        numberOfMatches += 1;
+        if (numberOfMatches > GameStartRuleConfig.MAX_NUMBER_OF_MATCHES)
+        {
+            numberOfMatches = GameStartRuleConfig.MIN_NUMBER_OF_MATCHES;
+        }
+        BattleSetting.setNumberOfMatches(numberOfMatches);
+        TextFrame.text = numberOfMatches.ToString();
+    }
+
 }

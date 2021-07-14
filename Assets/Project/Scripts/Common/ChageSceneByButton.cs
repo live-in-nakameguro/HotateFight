@@ -12,8 +12,8 @@ public class ChageSceneByButton : MonoBehaviour
 	{
 		if (!firstPush)
 		{
-			SceneManager.LoadScene(sceneName);// シーンをロードする
 			firstPush = true;
+			SceneManager.LoadScene(sceneName);// シーンをロードする
 		}
 	}
 }
