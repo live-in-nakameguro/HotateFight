@@ -3,9 +3,9 @@ namespace GameScenes.SettingAndResultBattle
 { 
     public class BattleSetting
     {
-        private static int numberOfMatches = 3;
-        public static void setNumberOfMatches(int number) => numberOfMatches = number;
-        public static int getNumberOfMatches() => numberOfMatches;
+        private static int numberOfWins = 3;
+        public static void setNumberOfWins(int number) => numberOfWins = number;
+        public static int getNumberOfWins() => numberOfWins;
 
     }
 

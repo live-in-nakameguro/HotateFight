@@ -1068,7 +1068,7 @@ GameObject:
   - component: {fileID: 1602782042}
   - component: {fileID: 1602782041}
   m_Layer: 5
-  m_Name: NumberOfMatchesText
+  m_Name: NumberOfWinsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1126,7 +1126,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Number of Matches
+  m_Text: Number Of Wins
 --- !u!222 &1602782042
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1219,8 +1219,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 152190475}
-        m_TargetAssemblyTypeName: ChageNumberOfMatches, Assembly-CSharp
-        m_MethodName: countUpMatches
+        m_TargetAssemblyTypeName: GameStartRule, Assembly-CSharp
+        m_MethodName: countUpWins
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1352,8 +1352,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 152190475}
-        m_TargetAssemblyTypeName: ChageNumberOfMatches, Assembly-CSharp
-        m_MethodName: countDownMatches
+        m_TargetAssemblyTypeName: GameStartRule, Assembly-CSharp
+        m_MethodName: countDownWins
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
