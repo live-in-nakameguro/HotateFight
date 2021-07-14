@@ -37,8 +37,8 @@ public class MoveCharacterSelectPlayer : MonoBehaviour
 			Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.LEFT_STICK_VER)) * iconSpeed * -1) * Time.deltaTime;
 
 		//　アイコンが画面外に出ないようにする
-		//pos.x = Mathf.Clamp(pos.x, -9.5f, 9.5f);
-		//pos.y = Mathf.Clamp(pos.y, -4.0f, 6.0f);
+		pos.x = Mathf.Clamp(pos.x, 0.0f, Screen.width);
+		pos.y = Mathf.Clamp(pos.y, 0.0f, Screen.height);
 		Debug.Log("Screen.width:" + Screen.width + " Screen.height" + Screen.height);
 		//　アイコン位置を設定
 		rect.anchoredPosition = pos;
