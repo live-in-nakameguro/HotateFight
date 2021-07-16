@@ -21,19 +21,28 @@ namespace CharacterSelect.Panel
     {
         // このスクリプトをもつコンポーネントのキャラクター
         public Characters character = Characters.NoSelect;
-        // どのプレイヤーがキャラクターを選んだかどうか判断する
-        public Dictionary<int,bool> playerSelectCharacter;
+        // このスクリプトをもつコンポーネントのキャラクター
+        public static Characters characterName;
 
-        // Start is called before the first frame update
-        void Start()
-        {
-            playerSelectCharacter = new Dictionary<int, bool>()
+        // キャラクターのマテリアル
+        public Material material;
+        // キャラクターのマテリアル
+        public static Color characterColor;
+
+        // どのプレイヤーがキャラクターを選んだかどうか判断する
+        public static Dictionary<int,bool> playerSelectCharacter = new Dictionary<int, bool>()
             {
                 { 1,false},
                 { 2,false},
                 { 3,false},
                 { 4,false}
             };
+
+        // Start is called before the first frame update
+        void Start()
+        {
+            characterName = character;
+            characterColor = material.color;
         }
 
         // Update is called once per frame

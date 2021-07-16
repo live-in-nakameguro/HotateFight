@@ -238,6 +238,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hotate
       objectReference: {fileID: 0}
+    - target: {fileID: 1972940858110791023, guid: d7f7e5f412754f2478adafc3c6a054f1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2988676848579063669, guid: d7f7e5f412754f2478adafc3c6a054f1, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -281,18 +285,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &66968403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 66968401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbd03b5ca0b6c4e43bd21b9cf51a5b9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &738105568
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,6 +761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: 2
+  material: {fileID: 2100000, guid: 201c38abfe170e74997115feaf37dd38, type: 2}
 --- !u!1 &1459290040
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,6 +1318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd03b5ca0b6c4e43bd21b9cf51a5b9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamepadNumber: 1
 --- !u!1 &2102661974
 GameObject:
   m_ObjectHideFlags: 0
