@@ -43,13 +43,14 @@ namespace CharacterSelect.Panel
         {
             characterName = character;
             characterColor = material.color;
+            Debug.Log(string.Format("characterName:{0},characterColor:{1}", characterName, characterColor));
         }
 
         // Update is called once per frame
         void Update()
         {
             //var isFocus = transform.GetChild(0).gameObject.activeSelf;
-
+            Debug.Log(string.Format("characterName:{0},characterColor:{1}", characterName, characterColor));
         }
 
         void OnTriggerStay2D(Collider2D col)
