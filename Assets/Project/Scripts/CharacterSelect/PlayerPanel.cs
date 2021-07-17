@@ -29,11 +29,25 @@ namespace CharacterSelect.Panel
 
         void ViewCharacter()
         {
-            if (CharacterPanel.playerSelectCharacter[gamepadNumber])
+            if (CharacterPanel_HotateBlue.playerSelectCharacter[gamepadNumber])
             {
-                //transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = CharacterPanel.characterColor;
-                transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Renderer>().materials[0].color = CharacterPanel.characterColor;
-                transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Renderer>().materials[1].color = CharacterPanel.characterColor;
+                character = CharacterPanel_HotateBlue.character;
+                transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Renderer>().materials[0].color = CharacterPanel_HotateBlue.characterColor;
+                transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Renderer>().materials[1].color = CharacterPanel_HotateBlue.characterColor;
+                transform.GetChild(0).gameObject.SetActive(true);
+            }
+            else if (CharacterPanel_HotateBrown.playerSelectCharacter[gamepadNumber])
+            {
+                character = CharacterPanel_HotateBrown.character;
+                transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Renderer>().materials[0].color = CharacterPanel_HotateBrown.characterColor;
+                transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Renderer>().materials[1].color = CharacterPanel_HotateBrown.characterColor;
+                transform.GetChild(0).gameObject.SetActive(true);
+            }
+            else if (CharacterPanel_HotateYellow.playerSelectCharacter[gamepadNumber])
+            {
+                character = CharacterPanel_HotateYellow.character;
+                transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Renderer>().materials[0].color = CharacterPanel_HotateYellow.characterColor;
+                transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Renderer>().materials[1].color = CharacterPanel_HotateYellow.characterColor;
                 transform.GetChild(0).gameObject.SetActive(true);
             }
             else
@@ -54,7 +68,6 @@ namespace CharacterSelect.Panel
                 if (Input.GetKeyDown(SetGamepadNumber(GamepadButtonConfig.BUTTON_A)))
                 {
                     isSelectCharacter = true;
-                    character = CharacterPanel.characterName;
                     Debug.Log(string.Format("Player{0}:{1}", gamepadNumber, character));
                 }
             }
