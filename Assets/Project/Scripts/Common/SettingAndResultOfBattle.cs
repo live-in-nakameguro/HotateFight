@@ -4,8 +4,12 @@ namespace GameScenes.SettingAndResultBattle
     public class BattleSetting
     {
         private static int numberOfWins = 3;
-        public static void setNumberOfWins(int number) => numberOfWins = number;
-        public static int getNumberOfWins() => numberOfWins;
+
+        public static int NumberOfWins
+        {
+            get { return numberOfWins; }
+            set { numberOfWins = value; }
+        }
 
     }
 
@@ -15,19 +19,29 @@ namespace GameScenes.SettingAndResultBattle
     public class BattleResult
     {
         private static int winNumPlayer1 = 0;
-        public static void setWinNumPlayer1(int number) => winNumPlayer1 = number;
-        public static int getWinNumPlayer1() => winNumPlayer1;
+        public static int WinNumPlayer1
+        {
+            get { return winNumPlayer1; }
+            set { winNumPlayer1 = value; }
+        }
 
         private static int winNumPlayer2 = 0;
-        public static void setWinNumPlayer2(int number) => winNumPlayer2 = number;
-        public static int getWinNumPlayer2() => winNumPlayer2;
-
+        public static int WinNumPlayer2
+        {
+            get { return winNumPlayer2; }
+            set { winNumPlayer2 = value; }
+        }
         private static int winNumPlayer3 = 0;
-        public static void setWinNumPlayer3(int number) => winNumPlayer3 = number;
-        public static int getWinNumPlayer3() => winNumPlayer3;
-
+        public static int WinNumPlayer3
+        {
+            get { return winNumPlayer3; }
+            set { winNumPlayer3 = value; }
+        }
         private static int winNumPlayer4 = 0;
-        public static void setWinNumPlayer4(int number) => winNumPlayer4 = number;
-        public static int getWinNumPlayer4() => winNumPlayer4;
+        public static int WinNumPlayer4
+        {
+            get { return winNumPlayer4; }
+            set { winNumPlayer4 = value; }
+        }
     }
 }

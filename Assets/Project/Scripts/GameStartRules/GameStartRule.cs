@@ -9,7 +9,7 @@ public class GameStartRule : MonoBehaviour
 {
     public Text TextFrame;
 
-    private int numberOfMatches = BattleSetting.getNumberOfWins();
+    private int numberOfMatches = BattleSetting.NumberOfWins;
 
     public void countDownWins()
     {
@@ -18,7 +18,7 @@ public class GameStartRule : MonoBehaviour
         {
             numberOfMatches = GameStartRuleConfig.MAX_NUMBER_OF_MATCHES;
         }
-        BattleSetting.setNumberOfWins(numberOfMatches);
+        BattleSetting.NumberOfWins = numberOfMatches;
         TextFrame.text = numberOfMatches.ToString();
     }
 
@@ -29,7 +29,7 @@ public class GameStartRule : MonoBehaviour
         {
             numberOfMatches = GameStartRuleConfig.MIN_NUMBER_OF_MATCHES;
         }
-        BattleSetting.setNumberOfWins(numberOfMatches);
+        BattleSetting.NumberOfWins = numberOfMatches;
         TextFrame.text = numberOfMatches.ToString();
     }
 

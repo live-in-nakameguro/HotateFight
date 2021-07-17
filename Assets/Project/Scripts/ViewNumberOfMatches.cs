@@ -11,7 +11,7 @@ public class ViewNumberOfMatches : MonoBehaviour
     private void Start()
     {
         //シーンに変数を渡せるかのテストをするための仮の文字です。
-        TextFrame.text = "Round: " + BattleSetting.getNumberOfWins().ToString();
+        TextFrame.text = "Round: " + BattleSetting.NumberOfWins.ToString();
     }
     
 }
