@@ -52,11 +52,14 @@ EditorBuildSettings:
     path: Assets/Project/Scenes/TitleScene.unity
     guid: 1085e73cf3530d74d8f06d5b07e58094
   - enabled: 1
+    path: Assets/Project/Scenes/MenuScene.unity
+    guid: dd967ed91fa9e104a92a95a6b7b15b70
+  - enabled: 1
     path: Assets/Project/Scenes/TestScenes.unity
     guid: 67c2ab067311c1740a3c0c92b6796bad
   - enabled: 1
-    path: Assets/Project/Scenes/MenuScene.unity
-    guid: dd967ed91fa9e104a92a95a6b7b15b70
+    path: Assets/Project/Scenes/CharacterSelectScene.unity
+    guid: be853b237f9fd714da9d863b459dfc5e
   - enabled: 1
     path: Assets/Project/Scenes/GameStartRuleScene.unity
     guid: dcc1611f8b68f1740aa63f2a33264f65
