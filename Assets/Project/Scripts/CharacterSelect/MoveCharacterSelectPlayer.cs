@@ -15,15 +15,10 @@ namespace CharacterSelect.Player
 		private float iconSpeed = 500;
 		//　アイコンのサイズ取得で使用
 		private RectTransform rect;
-		//　アイコンが画面内に収まる為のオフセット値
-		private Vector2 offset;
 
 		void Start()
 		{
 			rect = GetComponent<RectTransform>();
-			//　オフセット値をアイコンのサイズの半分で設定
-			//offset = new Vector2(rect.sizeDelta.x / 2.0f, rect.sizeDelta.y / 2.0f);
-			//Debug.Log(offset);
 		}
 
 		void Update()
@@ -44,14 +39,6 @@ namespace CharacterSelect.Player
 			Debug.Log("Screen.width:" + Screen.width + " Screen.height" + Screen.height);
 			//　アイコン位置を設定
 			rect.anchoredPosition = pos;
-		}
-
-		//地面に接触したときにはonGroundをtrue、injumpingをfalseにする
-		//ただし地面にGroundタグをつける必要がある
-		//OnCollisionEnterは物体同士がぶつかった時に呼ばれる
-		void OnCollisionEnter(Collision col)
-		{
-
 		}
 
 		string SetGamepadNumber(string gamepadKey)
