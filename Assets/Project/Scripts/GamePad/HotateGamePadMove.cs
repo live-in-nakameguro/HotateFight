@@ -106,7 +106,6 @@ public class HotateGamePadMove : MonoBehaviour
         {
             gamepadNumberStr = $" {gamepadNumber}";
         }
-        Debug.Log(string.Format(gamepadKey, gamepadNumberStr));
         return string.Format(gamepadKey, gamepadNumberStr);
     } 
 }
