@@ -4,6 +4,10 @@ using Gamepad.Config;
 
 public class HotatePunch : MonoBehaviour
 {
+    // SE
+    [SerializeField] AudioClip sound1;
+    AudioSource audioSource;
+
     [SerializeField] GameObject hotate_arm;
 
     //ToDo ‚Ç‚±‚©‚Å‚Ü‚Æ‚ß‚½‚¢
@@ -15,6 +19,12 @@ public class HotatePunch : MonoBehaviour
     private bool punch_down_end_flg = false;
 
     private int frame_count = 0;
+
+    void Start()
+    {
+        //Component‚ðŽæ“¾
+        audioSource = GetComponent<AudioSource>();
+    }
 
     void Update()
     {
@@ -43,6 +53,7 @@ public class HotatePunch : MonoBehaviour
             frame_count += 1;
             if (frame_count >= 25)
             {
+                PunchVoiceEffect();
                 punch_down_end_flg = true;
                 frame_count = 0;
             }
@@ -63,6 +74,11 @@ public class HotatePunch : MonoBehaviour
                 frame_count = 0;
             }
         }
+    }
+
+    void PunchVoiceEffect()
+    {
+        audioSource.PlayOneShot(sound1);
     }
 
     string SetGamepadNumber(string gamepadKey)
