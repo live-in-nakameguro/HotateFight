@@ -13,12 +13,13 @@ public class HotatePunch : MonoBehaviour
     //ToDo ‚Ç‚±‚©‚Å‚Ü‚Æ‚ß‚½‚¢
     [SerializeField] int gamepadNumber = 0;
 
-    private float punch_speed = 2.0f;
+    private float punch_speed = 3.0f;
+    private int MAX_FRAME_COUNT = 20;
+    private int frame_count = 0;
 
     private bool punch_execute_flg = false;
     private bool punch_down_end_flg = false;
 
-    private int frame_count = 0;
 
     void Start()
     {
@@ -51,7 +52,7 @@ public class HotatePunch : MonoBehaviour
         {
             hotate_arm.transform.Rotate(-punch_speed, 0.0f, 0.0f);
             frame_count += 1;
-            if (frame_count >= 25)
+            if (frame_count >= MAX_FRAME_COUNT)
             {
                 PunchVoiceEffect();
                 punch_down_end_flg = true;
@@ -66,7 +67,7 @@ public class HotatePunch : MonoBehaviour
         {
             hotate_arm.transform.Rotate(punch_speed, 0.0f, 0.0f);
             frame_count += 1;
-            if (frame_count >= 25)
+            if (frame_count >= MAX_FRAME_COUNT)
             {
                 punch_down_end_flg = false;
                 punch_execute_flg = false;
