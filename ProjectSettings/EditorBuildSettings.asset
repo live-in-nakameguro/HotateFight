@@ -49,7 +49,7 @@ EditorBuildSettings:
     path: Assets/Project/Scenes/MenuScene.unity
     guid: dd967ed91fa9e104a92a95a6b7b15b70
   - enabled: 1
-    path: Assets/Project/Scenes/TestScenes.unity
+    path: Assets/Project/Scenes/TestScenes/TestScene.unity
     guid: 67c2ab067311c1740a3c0c92b6796bad
   - enabled: 1
     path: Assets/Project/Scenes/CharacterSelectScene.unity
@@ -58,7 +58,7 @@ EditorBuildSettings:
     path: Assets/Project/Scenes/GameStartRuleScene.unity
     guid: dcc1611f8b68f1740aa63f2a33264f65
   - enabled: 1
-    path: Assets/Project/Scenes/HotateBattleSceneAfterGameStart.unity
+    path: Assets/Project/Scenes/TestScenes/HotateBattleSceneAfterGameStart.unity
     guid: a35c4bb7e5ca9e044937f8dc2982273c
   - enabled: 1
     path: Assets/Project/Scenes/StageScenes/DesertStageScene.unity
