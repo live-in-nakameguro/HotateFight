@@ -2,6 +2,7 @@ using CharacterSelect.Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace CharacterSelect.Panel
 {
@@ -21,6 +22,22 @@ namespace CharacterSelect.Panel
                 { 3,false},
                 { 4,false}
             };
+
+        static CharacterPanel_HotateYellow()
+        {
+            SceneManager.sceneLoaded += Init;
+        }
+
+        private static void Init(Scene loadingScene, LoadSceneMode loadSceneMode)
+        {
+            playerSelectCharacter = new Dictionary<int, bool>()
+            {
+                { 1,false},
+                { 2,false},
+                { 3,false},
+                { 4,false}
+            };
+        }
 
         // Start is called before the first frame update
         void Start()
