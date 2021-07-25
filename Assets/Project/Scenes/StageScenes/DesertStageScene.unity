@@ -863,7 +863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e67fa5411234f8479a6718b642c0984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameObjectName: 
+  GameObjectName: Hotate_player2
   DeadPointY: -10
   gamepadNumber: 0
 --- !u!1 &851490098
