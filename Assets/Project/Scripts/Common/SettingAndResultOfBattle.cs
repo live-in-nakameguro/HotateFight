@@ -4,11 +4,18 @@ namespace GameScenes.SettingAndResultBattle
     public class BattleSetting
     {
         private static int numberOfWins = 3;
+        private static float hotateHP = 100.0f;
 
         public static int NumberOfWins
         {
             get { return numberOfWins; }
             set { numberOfWins = value; }
+        }
+
+        public static float HotateHP
+        {
+            get { return hotateHP; }
+            set { hotateHP = value; }
         }
 
     }

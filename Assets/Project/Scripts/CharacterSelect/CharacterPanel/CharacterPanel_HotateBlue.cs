@@ -2,6 +2,7 @@ using CharacterSelect.Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace CharacterSelect.Panel
 {
@@ -14,13 +15,23 @@ namespace CharacterSelect.Panel
         // キャラクターのマテリアル
         public static Color characterColor;
         // どのプレイヤーがキャラクターを選んだかどうか判断する
-        public static Dictionary<int, bool> playerSelectCharacter = new Dictionary<int, bool>()
+        public static Dictionary<int, bool> playerSelectCharacter;
+
+        static CharacterPanel_HotateBlue()
+        {
+            SceneManager.sceneLoaded += Init;
+        }
+
+        private static void Init(Scene loadingScene, LoadSceneMode loadSceneMode)
+        {
+            playerSelectCharacter = new Dictionary<int, bool>()
             {
                 { 1,false},
                 { 2,false},
                 { 3,false},
                 { 4,false}
             };
+        }
 
         // Start is called before the first frame update
         void Start()
