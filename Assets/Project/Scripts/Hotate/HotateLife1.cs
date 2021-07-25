@@ -1,11 +1,14 @@
+using GameScenes.SettingAndResultBattle;
+using Hotate.Dead;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Hotate.Life
 {
-    public class HotateLife : MonoBehaviour
+    public class HotateLife1 : MonoBehaviour
     {
         // ホタテのHP
-        [SerializeField] float hotateHP = 100.0f;
+        public static float hotateHP = BattleSetting.HotateHP;
 
         // ホタテがダメージを受けないフラグ
         [SerializeField] bool isInnvincible = false;
@@ -18,6 +21,19 @@ namespace Hotate.Life
 
         // ダメージを受けた後の無敵時間（秒）
         private float invincibleTime = 0.0f;
+
+        //GamepadNumberの指定(0を選択した場合、すべてのゲームパッドで操作可能になる。)
+        [SerializeField] int gamepadNumber = 1;
+
+        static HotateLife1()
+        {
+            SceneManager.sceneLoaded += Init;
+        }
+
+        private static void Init(Scene loadingScene, LoadSceneMode loadSceneMode)
+        {
+            hotateHP = BattleSetting.HotateHP;
+        }
 
         // Update is called once per frame
         void Update()
@@ -65,6 +81,7 @@ namespace Hotate.Life
                     Debug.Log("Dead");
 
                     // TODO：死亡時の挙動
+                    HotateDeadController.IsHotateDeadDict[gamepadNumber] = true;
                 }
             }
         }
