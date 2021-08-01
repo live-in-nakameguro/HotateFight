@@ -55,7 +55,7 @@ EditorBuildSettings:
     path: Assets/Project/Scenes/CharacterSelectScene.unity
     guid: be853b237f9fd714da9d863b459dfc5e
   - enabled: 1
-    path: Assets/Project/Scenes/GameStartRuleScene.unity
+    path: Assets/Project/Scenes/GameStartRuleScene/GameStartRuleScene.unity
     guid: dcc1611f8b68f1740aa63f2a33264f65
   - enabled: 1
     path: Assets/Project/Scenes/TestScenes/HotateBattleSceneAfterGameStart.unity

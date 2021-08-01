@@ -4,7 +4,9 @@ namespace GameScenes.SettingAndResultBattle
     public class BattleSetting
     {
         private static int numberOfWins = 3;
-        private static float hotateHP = 100.0f;
+        private static float hotateHP = 300.0f;
+        private static bool isRondmo = true;
+        private static bool isItemsOn = true;
 
         public static int NumberOfWins
         {
@@ -18,6 +20,17 @@ namespace GameScenes.SettingAndResultBattle
             set { hotateHP = value; }
         }
 
+        public static bool IsRondom
+        {
+            get { return isRondmo; }
+            set { isRondmo = value; }
+        }
+
+        public static bool IsItemsOn
+        {
+            get { return isItemsOn; }
+            set { isItemsOn = value; }
+        }
     }
 
     /* åªç›ÇÕéQè∆ÇµÇƒÇ¢Ç»Ç¢ÅB
