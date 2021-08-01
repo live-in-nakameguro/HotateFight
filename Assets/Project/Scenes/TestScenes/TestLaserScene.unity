@@ -5573,6 +5573,36 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &327956247
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 327956248}
+  m_Layer: 0
+  m_Name: LaserPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &327956248
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327956247}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 684281277}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &332713481 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2296393078715663276, guid: 8cf9f1613ab3a6c429fe83f7b3b2136a, type: 3}
@@ -5928,7 +5958,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 684281274}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41b04224d52bb2e44b7decb56973b998, type: 3}
   m_Name: 
@@ -5936,6 +5966,40 @@ MonoBehaviour:
   sound1: {fileID: 8300000, guid: a80cd1c9abf71694e9a3e24562afe58d, type: 3}
   HotateLaserObject: {fileID: 81348678}
   gamepadNumber: 1
+  laserSpead: 10
+--- !u!114 &684281284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684281274}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41b04224d52bb2e44b7decb56973b998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound1: {fileID: 8300000, guid: a424ff9be8daf074c8dcf2d8a4fb28a3, type: 3}
+  HotateLaserObject: {fileID: 0}
+  gamepadNumber: 1
+  laserSpead: 10
+--- !u!114 &684281285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684281274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afea7d2cf45213c49a28618e2e49de87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound1: {fileID: 8300000, guid: a424ff9be8daf074c8dcf2d8a4fb28a3, type: 3}
+  gamepadNumber: 1
+  bullet: {fileID: 7880806400724033804, guid: 0cd1410f05f76bd4d96d242591e5f24e, type: 3}
+  muzzle: {fileID: 327956248}
+  speed: 1000
 --- !u!1001 &688270477
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,6 +13,9 @@ public class HotateLaser : MonoBehaviour
     //ToDo どこかでまとめたい
     [SerializeField] int gamepadNumber = 0;
 
+    //レーザースピード
+    [SerializeField] float laserSpead = 0.1f;
+
     private bool isLaserExecute = false;
 
     void Start()
@@ -34,11 +37,21 @@ public class HotateLaser : MonoBehaviour
             HotateLaserObject.SetActive(true);
             LaserVoiceEffect();
         }
+
+        if (isLaserExecute)
+        {
+            LaserMove();
+        }
     }
 
     void LaserVoiceEffect()
     {
         audioSource.PlayOneShot(sound1);
+    }
+
+    void LaserMove()
+    {
+        HotateLaserObject.transform.position += transform.forward * -laserSpead * Time.deltaTime;
     }
 
     string SetGamepadNumber(string gamepadKey)
