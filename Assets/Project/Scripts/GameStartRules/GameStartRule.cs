@@ -67,7 +67,7 @@ public class GameStartRule : MonoBehaviour
         
         BattleSetting.IsRondom = isRondom;
         if(isRondom) TextFrameStage.text = "Rondom";
-        else TextFrameStage.text = "Selected";
+        else TextFrameStage.text = "Select";
     }
 
     public void changeItemsOnOff()
