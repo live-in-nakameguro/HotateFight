@@ -2087,6 +2087,7 @@ GameObject:
   - component: {fileID: 1067920575}
   - component: {fileID: 1067920574}
   - component: {fileID: 1067920573}
+  - component: {fileID: 1067920576}
   m_Layer: 5
   m_Name: CustomSatgeSettings
   m_TagString: Untagged
@@ -2158,9 +2159,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 152190475}
-        m_TargetAssemblyTypeName: GameStartRule, Assembly-CSharp
-        m_MethodName: countUpWins
+      - m_Target: {fileID: 1067920576}
+        m_TargetAssemblyTypeName: ChageSceneByButton, Assembly-CSharp
+        m_MethodName: ChangeSecenButtonMethod
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2208,6 +2209,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1067920571}
   m_CullTransparentMesh: 1
+--- !u!114 &1067920576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067920571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbfc4e5bbeccfcb47b69dff73754959e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: StageRandomSwitchScene
 --- !u!1 &1068081806
 GameObject:
   m_ObjectHideFlags: 0
