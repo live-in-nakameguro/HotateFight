@@ -3425,7 +3425,7 @@ GameObject:
   - component: {fileID: 1774424983}
   - component: {fileID: 1774424982}
   m_Layer: 5
-  m_Name: StageSelectText
+  m_Name: StageRandomSwitchText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3472,7 +3472,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 495c9e2a934bcc640a8d7427b13cb680, type: 3}
-    m_FontSize: 150
+    m_FontSize: 140
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
@@ -3483,7 +3483,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Stage Select
+  m_Text: Stage Random Switch
 --- !u!222 &1774424983
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+
 namespace GameScenes.SettingAndResultBattle
 { 
     public class BattleSetting
@@ -31,6 +33,21 @@ namespace GameScenes.SettingAndResultBattle
             get { return isItemsOn; }
             set { isItemsOn = value; }
         }
+    }
+
+    public class RandomStageSetting
+    {
+        public static Dictionary<string, bool> RandomStageSettingDicr = new Dictionary<string, bool>()
+            {
+                {"IceStage", true},
+                {"MagmaStage", true},
+                {"OceanStage", true},
+                {"MeadowStage", true},
+                {"UniverseSatge", true},
+                {"DesertStage", true},
+                {"DarkStage", true},
+                {"CityStage", true}
+            };
     }
 
     /* åªç›ÇÕéQè∆ÇµÇƒÇ¢Ç»Ç¢ÅB
