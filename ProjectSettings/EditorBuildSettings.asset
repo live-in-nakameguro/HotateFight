@@ -66,4 +66,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Project/Scenes/StageScenes/UniverseStageScene.unity
     guid: c9fb4b07a4bc9d945930d4207a6f49e7
+  - enabled: 1
+    path: Assets/Project/Scenes/GameStartRuleScene/StageRandomSwitchScene.unity
+    guid: 99714a921cba5204b87645f768247e5d
   m_configObjects: {}
