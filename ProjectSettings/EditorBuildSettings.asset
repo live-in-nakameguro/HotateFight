@@ -63,4 +63,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Project/Scenes/StageScenes/DesertStageScene.unity
     guid: 5d0a9caa94e3f924888350d1f9358558
+  - enabled: 1
+    path: Assets/Project/Scenes/StageScenes/UniverseScene.unity
+    guid: c9fb4b07a4bc9d945930d4207a6f49e7
   m_configObjects: {}

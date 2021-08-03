@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Gamepad.Config;
+using UnityEngine.SceneManagement;
 
 
 public class MoveStageSelectPlayer : MonoBehaviour
@@ -15,9 +16,13 @@ public class MoveStageSelectPlayer : MonoBehaviour
 	//　アイコンのサイズ取得で使用
 	private RectTransform rect;
 
+	private Collider2D collision2d;
+
 	private bool isSelectStage = false;
 
 	private bool isOnStageImage = false;
+
+	private bool firstPush = false;
 
 	void Start()
 	{
@@ -35,6 +40,7 @@ public class MoveStageSelectPlayer : MonoBehaviour
 		if (col.gameObject.tag == "CharacterSelect")
 		{
 			isOnStageImage = true;
+			collision2d = col;
 		}
 	}
 	void OnTriggerExit2D(Collider2D col)
@@ -42,6 +48,7 @@ public class MoveStageSelectPlayer : MonoBehaviour
 		if (col.gameObject.tag == "CharacterSelect")
 		{
 			isOnStageImage = false;
+			collision2d = null;
 		}
 	}
 
@@ -55,6 +62,12 @@ public class MoveStageSelectPlayer : MonoBehaviour
 			isSelectStage = true;
 			//ここにロードするステージの処理を入れる。
 			Debug.Log(string.Format("Load Stage"));
+			var stageSelect = collision2d.gameObject.GetComponent<StageSelect>();
+            if (!firstPush)
+            {
+				firstPush = true;
+				SceneManager.LoadScene(stageSelect.stageSceneName);
+			}
 		}
 
 	}

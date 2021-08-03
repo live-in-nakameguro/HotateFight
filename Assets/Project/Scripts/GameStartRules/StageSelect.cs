@@ -1,20 +1,9 @@
-using CharacterSelect.Player;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using Gamepad.Config;
+
 
 public class StageSelect : MonoBehaviour
 {
-    private bool isSelectStage = false;
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    public string stageSceneName;
 
     void OnTriggerStay2D(Collider2D col)
     {
