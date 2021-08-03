@@ -37,13 +37,13 @@ namespace GameScenes.SettingAndResultBattle
 
     public class RandomStageSetting
     {
-        public static Dictionary<string, bool> RandomStageSettingDicr = new Dictionary<string, bool>()
+        public static Dictionary<string, bool> RandomStageSettingDic = new Dictionary<string, bool>()
             {
                 {"IceStage", true},
                 {"MagmaStage", true},
                 {"OceanStage", true},
                 {"MeadowStage", true},
-                {"UniverseSatge", true},
+                {"UniverseStage", true},
                 {"DesertStage", true},
                 {"DarkStage", true},
                 {"CityStage", true}
