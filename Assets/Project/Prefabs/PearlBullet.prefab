@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 7880806400724033807}
   - component: {fileID: 7880806400724033806}
   - component: {fileID: 7880806400724033801}
+  - component: {fileID: -1930178706841103704}
   m_Layer: 0
   m_Name: PearlBullet
-  m_TagString: Untagged
+  m_TagString: DamageSource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 7880806400724033804}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -4.271, y: 3, z: -2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -112,3 +113,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-1930178706841103704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7880806400724033804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9192d225acc9ffd478cadbfda7ff06b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageNum: 10
+  invincibleTime: 1
+  damageType: 0
+  sound1: {fileID: 0}
+  bullet: {fileID: 7880806400724033804}

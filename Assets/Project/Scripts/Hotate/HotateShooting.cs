@@ -3,72 +3,96 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HotateShooting : MonoBehaviour
+namespace Hotate.Shooting
 {
-    // SE
-    [SerializeField] AudioClip sound1;
-    AudioSource audioSource;
-
-    //ToDo ‚Ç‚±‚©‚Å‚Ü‚Æ‚ß‚½‚¢
-    [SerializeField] int gamepadNumber = 0;
-
-    // bullet prefab
-    public GameObject bullet;
-
-    // ’eŠÛ”­Ë“_
-    public Transform muzzle;
-
-    // ’eŠÛ‚Ì‘¬“x
-    public float speed = 1000;
-
-    // Use this for initialization
-    void Start()
+    public class HotateShooting : MonoBehaviour
     {
-        //Component‚ğæ“¾
-        audioSource = GetComponent<AudioSource>();
-    }
+        // SE
+        [SerializeField] AudioClip sound1;
+        AudioSource audioSource;
 
-    // Update is called once per frame
-    void Update()
-    {
-        Execute();
-    }
+        //ToDo ‚Ç‚±‚©‚Å‚Ü‚Æ‚ß‚½‚¢
+        [SerializeField] int gamepadNumber = 0;
 
-    void Execute()
-    {
-        // z ƒL[‚ª‰Ÿ‚³‚ê‚½
-        if (Input.GetKeyDown(SetGamepadNumber(GamepadButtonConfig.BUTTON_X)))
+        // bullet prefab
+        [SerializeField] GameObject bullet;
+
+        // ’eŠÛ”­Ë“_
+        [SerializeField] Transform muzzle;
+
+        // ’eŠÛ‚Ì‘¬“x
+        public float speed = 1000;
+
+        // ”­Ë‰Â”\‚È’eŠÛ‚ÌÅ‘å”
+        private const int MAX_BULLET_NUM = 3;
+        // ”­Ë‰Â”\‚È’eŠÛ‚ÌÅ¬”
+        private const int MIN_BULLET_NUM = 0;
+
+        // ”­Ë‰Â”\‚È’eŠÛ‚Ì”
+        private int bulletNum = 3;
+
+        public float reloadTime = 2.0f;
+
+        // Use this for initialization
+        void Start()
         {
-            LaserVoiceEffect();
-
-            // ’eŠÛ‚Ì•¡»
-            GameObject bullets = Instantiate(bullet) as GameObject;
-
-            Vector3 force;
-
-            force = this.gameObject.transform.forward * -speed;
-
-            // Rigidbody‚É—Í‚ğ‰Á‚¦‚Ä”­Ë
-            bullets.GetComponent<Rigidbody>().AddForce(force);
-
-            // ’eŠÛ‚ÌˆÊ’u‚ğ’²®
-            bullets.transform.position = muzzle.position;
+            //Component‚ğæ“¾
+            audioSource = GetComponent<AudioSource>();
         }
-    }
 
-    void LaserVoiceEffect()
-    {
-        audioSource.PlayOneShot(sound1);
-    }
-
-    string SetGamepadNumber(string gamepadKey)
-    {
-        string gamepadNumberStr = "";
-        if (gamepadNumber != 0)
+        // Update is called once per frame
+        void Update()
         {
-            gamepadNumberStr = $" {gamepadNumber}";
+            Shooting();
         }
-        return string.Format(gamepadKey, gamepadNumberStr);
-    }
 
+        void Shooting()
+        {
+            if (bulletNum <= MIN_BULLET_NUM)
+            {
+                return;
+            }
+
+            // z ƒL[‚ª‰Ÿ‚³‚ê‚½
+            if (Input.GetKeyDown(SetGamepadNumber(GamepadButtonConfig.BUTTON_X)))
+            {
+                ShootingVoiceEffect();
+
+                // ’eŠÛ‚Ì•¡»
+                GameObject bullets = Instantiate(bullet) as GameObject;
+
+                Vector3 force = this.gameObject.transform.forward * -speed;
+
+                // Rigidbody‚É—Í‚ğ‰Á‚¦‚Ä”­Ë
+                bullets.GetComponent<Rigidbody>().AddForce(force);
+
+                // ’eŠÛ‚ÌˆÊ’u‚ğ’²®
+                bullets.transform.position = muzzle.position;
+
+                bulletNum -= 1;
+                Invoke(nameof(ReloadBullet), reloadTime);
+            }
+        }
+
+        void ShootingVoiceEffect()
+        {
+            audioSource.PlayOneShot(sound1);
+        }
+
+        void ReloadBullet()
+        {
+            bulletNum += 1;
+        }
+
+        string SetGamepadNumber(string gamepadKey)
+        {
+            string gamepadNumberStr = "";
+            if (gamepadNumber != 0)
+            {
+                gamepadNumberStr = $" {gamepadNumber}";
+            }
+            return string.Format(gamepadKey, gamepadNumberStr);
+        }
+
+    }
 }
