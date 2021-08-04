@@ -1,10 +1,14 @@
 using System.Collections;
+using System.Collections.Generic;
+
 namespace GameScenes.SettingAndResultBattle
 { 
     public class BattleSetting
     {
         private static int numberOfWins = 3;
-        private static float hotateHP = 100.0f;
+        private static float hotateHP = 300.0f;
+        private static bool isRondmo = true; // Rondom or Select
+        private static bool isItemsOn = true; // ON or OFF
 
         public static int NumberOfWins
         {
@@ -18,6 +22,32 @@ namespace GameScenes.SettingAndResultBattle
             set { hotateHP = value; }
         }
 
+        public static bool IsRondom
+        {
+            get { return isRondmo; }
+            set { isRondmo = value; }
+        }
+
+        public static bool IsItemsOn
+        {
+            get { return isItemsOn; }
+            set { isItemsOn = value; }
+        }
+    }
+
+    public class RandomStageSetting
+    {
+        public static Dictionary<string, bool> RandomStageSettingDic = new Dictionary<string, bool>()
+            {
+                {"IceStage", true},
+                {"MagmaStage", true},
+                {"OceanStage", true},
+                {"MeadowStage", true},
+                {"UniverseStage", true},
+                {"DesertStage", true},
+                {"DarkStage", true},
+                {"CityStage", true}
+            };
     }
 
     /* åªç›ÇÕéQè∆ÇµÇƒÇ¢Ç»Ç¢ÅB
