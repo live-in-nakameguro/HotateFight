@@ -44,7 +44,7 @@ namespace Hotate.Life
         // 物体が当たっている場合、呼ばれ続ける。
         // 調査TODO：接触し続けているように見えるが、途中で非接触判定になってしまう。ダメージ床の実装に必要
         // ダメージ床を実装しないならば、OnCollisionEnterを使用する。
-        void OnCollisionStay(Collision col)
+        void OnCollisionEnter(Collision col)
         {
             DamageTriger(col);
         }
