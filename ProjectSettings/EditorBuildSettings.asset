@@ -61,12 +61,15 @@ EditorBuildSettings:
     path: Assets/Project/Scenes/TestScenes/HotateBattleSceneAfterGameStart.unity
     guid: a35c4bb7e5ca9e044937f8dc2982273c
   - enabled: 1
+    path: Assets/Project/Scenes/GameStartRuleScene/StageRandomSwitchScene.unity
+    guid: 99714a921cba5204b87645f768247e5d
+  - enabled: 1
+    path: Assets/Project/Scenes/GameStartRuleScene/StageSelectScene.unity
+    guid: 4958fbd2e03b34f4396850eb66b74119
+  - enabled: 1
     path: Assets/Project/Scenes/StageScenes/DesertStageScene.unity
     guid: 5d0a9caa94e3f924888350d1f9358558
   - enabled: 1
     path: Assets/Project/Scenes/StageScenes/UniverseStageScene.unity
     guid: c9fb4b07a4bc9d945930d4207a6f49e7
-  - enabled: 1
-    path: Assets/Project/Scenes/GameStartRuleScene/StageRandomSwitchScene.unity
-    guid: 99714a921cba5204b87645f768247e5d
   m_configObjects: {}

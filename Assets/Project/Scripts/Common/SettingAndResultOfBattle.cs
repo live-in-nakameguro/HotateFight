@@ -39,14 +39,15 @@ namespace GameScenes.SettingAndResultBattle
     {
         public static Dictionary<string, bool> RandomStageSettingDic = new Dictionary<string, bool>()
             {
-                {"IceStage", true},
-                {"MagmaStage", true},
-                {"OceanStage", true},
-                {"MeadowStage", true},
+                //ToDo ステージの実装が完了してからデフォルトをTrueにする。
+                {"IceStage", false},
+                {"MagmaStage", false},
+                {"OceanStage", false},
+                {"MeadowStage", false},
                 {"UniverseStage", true},
                 {"DesertStage", true},
-                {"DarkStage", true},
-                {"CityStage", true}
+                {"DarkStage", false},
+                {"CityStage", false}
             };
     }
 

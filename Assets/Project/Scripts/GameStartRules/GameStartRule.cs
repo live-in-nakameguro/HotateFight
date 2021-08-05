@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using GameScenes.Config;
 using GameScenes.SettingAndResultBattle;
+using UnityEngine.SceneManagement;
 
 public class GameStartRule : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class GameStartRule : MonoBehaviour
     private float hotateHP= BattleSetting.HotateHP;
     private bool isRondom = BattleSetting.IsRondom;
     private bool isItemsOn = BattleSetting.IsItemsOn;
+
 
     public void countDownWins()
     {
@@ -77,5 +79,34 @@ public class GameStartRule : MonoBehaviour
         BattleSetting.IsItemsOn = isItemsOn;
         if (isItemsOn) TextFrameItems.text = "ON";
         else TextFrameItems.text = "OFF";
+    }
+
+    public void gameStartButton()
+    {
+        if (isRondom)
+        {
+            var randomStageOnList = new List<string>();
+            var randomStageOffList = new List<string>();
+            // ランダムスイッチがONのステージを抽出する。
+            foreach (KeyValuePair<string, bool> pair in RandomStageSetting.RandomStageSettingDic)
+            {
+                if (pair.Value) randomStageOnList.Add(pair.Key);
+                else randomStageOffList.Add(pair.Key);
+            }
+
+            // ランダムスイッチがすべてOFFだった場合、すべてONの場合と挙動を変わらなくする。
+            if (randomStageOnList.Count == 0)
+                randomStageOnList = randomStageOffList;
+
+            //ランダムにステージを選択
+            string selectedRandomStage = randomStageOnList[Random.Range(0, randomStageOnList.Count)];
+            Debug.Log(selectedRandomStage);
+            SceneManager.LoadScene(selectedRandomStage+ "Scene");
+        }
+        else
+        {
+            //ランダムがオフの場合、ステージセレクト画面に遷移
+            SceneManager.LoadScene("StageSelectScene");
+        }
     }
 }
