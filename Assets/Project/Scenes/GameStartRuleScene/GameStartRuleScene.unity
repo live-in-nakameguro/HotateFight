@@ -703,7 +703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbfc4e5bbeccfcb47b69dff73754959e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: DesertStageScene
+  sceneName: UniverseStageScene
 --- !u!114 &152190475
 MonoBehaviour:
   m_ObjectHideFlags: 0
