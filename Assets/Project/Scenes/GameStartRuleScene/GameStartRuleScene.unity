@@ -2025,9 +2025,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 152190474}
-        m_TargetAssemblyTypeName: ChageSceneByButton, Assembly-CSharp
-        m_MethodName: ChangeSecenButtonMethod
+      - m_Target: {fileID: 152190475}
+        m_TargetAssemblyTypeName: GameStartRule, Assembly-CSharp
+        m_MethodName: gameStartButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

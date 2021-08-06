@@ -1,5 +1,6 @@
 using UnityEngine;
 using GameScenes.SettingAndResultBattle;
+using System.Collections.Generic;
 
 public class RandomStageSelect : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class RandomStageSelect : MonoBehaviour
         //Falseのステージはグレーアウトするための実装
         if(RandomStageSetting.RandomStageSettingDic[stageName]) transform.GetChild(3).gameObject.SetActive(false);
         else transform.GetChild(3).gameObject.SetActive(true);
+
     }
 
 }
