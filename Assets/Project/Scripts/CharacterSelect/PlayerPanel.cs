@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Hotate;
 using UnityEngine.SceneManagement;
+using Gamepad.CharacterSelect;
 
 namespace CharacterSelect.Panel
 {
@@ -18,6 +19,12 @@ namespace CharacterSelect.Panel
         public static Color characterColor;
 
         private bool isSelectCharacter = false;
+
+        //ゲームプレイ人数に満たない場合、オブジェクトを非表示にする。
+        private void Start()
+        {
+            CharacterSelectUtil.CheckPlayersNumAndHidden(gamepadNumber, gameObject);
+        }
 
         // Update is called once per frame
         void Update()
