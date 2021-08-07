@@ -59,9 +59,11 @@ namespace Hotate.Dead
             }
 
             // ëäë≈ÇøÇ…Ç»Ç¡ÇΩèÍçá
-            if (deadNum == BattleSetting.NumberOfPlayers)
+            if (deadNum >= BattleSetting.NumberOfPlayers)
             {
                 // TODO Ç«Ç§Ç∑ÇÈÅH
+                Debug.Log("Drow");
+                SceneManager.LoadScene("ScoreBourdScene");
             }
         }
     }
