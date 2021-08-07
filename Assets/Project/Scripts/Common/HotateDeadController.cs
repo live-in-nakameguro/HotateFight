@@ -1,3 +1,5 @@
+using GameScenes.SettingAndResultBattle;
+using ScoreBourdScene;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,9 +9,6 @@ namespace Hotate.Dead
 {
     public class HotateDeadController : MonoBehaviour
     {
-        // TODO プレイヤーの人数を設定する
-        [SerializeField] int PlayerNum = 2;
-
         public static Dictionary<int, bool> IsHotateDeadDict;
 
         // シーン移動するたびに呼ばれる。
@@ -37,28 +36,34 @@ namespace Hotate.Dead
         private void DeadCheck()
         {
             int deadNum = 0;
+            int AliveHotateNumber = 0;
 
-            for (int i = 1; i <= PlayerNum; i++)
+            for (int i = 1; i <= BattleSetting.NumberOfPlayers; i++)
             {
                 if (IsHotateDeadDict[i])
                 {
                     deadNum += 1;
                 }
+                else
+                {
+                    AliveHotateNumber = i;
+                }
             }
 
             // 1人だけ生き残った場合
-            if (deadNum == PlayerNum - 1)
+            if (deadNum == BattleSetting.NumberOfPlayers - 1)
             {
-                // TODO 途中成績画面を表示する。
-
-                // 仮の処理
-                SceneManager.LoadScene("TitleScene");
+                ScoreBourdController.PlayerNumberOfWins[AliveHotateNumber] += 1;
+                // 途中成績画面を表示する。
+                SceneManager.LoadScene("ScoreBourdScene");
             }
 
             // 相打ちになった場合
-            if (deadNum == PlayerNum)
+            if (deadNum >= BattleSetting.NumberOfPlayers)
             {
                 // TODO どうする？
+                Debug.Log("Drow");
+                SceneManager.LoadScene("ScoreBourdScene");
             }
         }
     }
