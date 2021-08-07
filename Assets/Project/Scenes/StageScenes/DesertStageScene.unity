@@ -209,6 +209,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7647686062586441180, guid: 81b06f65c0545eb4f8ed5dc59de8f77c, type: 3}
+      propertyPath: GameObjectName
+      value: Hotate_player1 Variant
+      objectReference: {fileID: 0}
     - target: {fileID: 2127639142, guid: 81b06f65c0545eb4f8ed5dc59de8f77c, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
       value: 0.5
@@ -380,7 +384,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc3803c5659e5544998c097763f4daa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerNum: 2
 --- !u!1001 &1038509777
 PrefabInstance:
   m_ObjectHideFlags: 0

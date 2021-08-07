@@ -8,7 +8,7 @@ namespace GameScenes.SettingAndResultBattle
         private static int numberOfPlayers = 2;
         private static int numberOfWins = 3;
         private static float hotateHP = 300.0f;
-        private static bool isRondmo = true; // Rondom or Select
+        private static bool isRondom = true; // Rondom or Select
         private static bool isItemsOn = true; // ON or OFF
 
         public static int NumberOfPlayers
@@ -31,8 +31,8 @@ namespace GameScenes.SettingAndResultBattle
 
         public static bool IsRondom
         {
-            get { return isRondmo; }
-            set { isRondmo = value; }
+            get { return isRondom; }
+            set { isRondom = value; }
         }
 
         public static bool IsItemsOn

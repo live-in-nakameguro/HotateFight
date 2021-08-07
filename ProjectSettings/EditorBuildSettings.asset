@@ -75,4 +75,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Project/Scenes/StageScenes/UniverseStageScene.unity
     guid: c9fb4b07a4bc9d945930d4207a6f49e7
+  - enabled: 1
+    path: Assets/Project/Scenes/ScoreBourdScene.unity
+    guid: 900ef3942a1fbe64b83e07b7f8647824
   m_configObjects: {}
