@@ -5,10 +5,17 @@ namespace GameScenes.SettingAndResultBattle
 { 
     public class BattleSetting
     {
+        private static int numberOfPlayers = 2;
         private static int numberOfWins = 3;
         private static float hotateHP = 300.0f;
         private static bool isRondmo = true; // Rondom or Select
         private static bool isItemsOn = true; // ON or OFF
+
+        public static int NumberOfPlayers
+        {
+            get { return numberOfPlayers; }
+            set { numberOfPlayers = value; }
+        }
 
         public static int NumberOfWins
         {

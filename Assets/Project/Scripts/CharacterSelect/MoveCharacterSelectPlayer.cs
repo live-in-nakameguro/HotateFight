@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Gamepad.Config;
+using Gamepad.CharacterSelect;
 
 namespace CharacterSelect.Player
 {
@@ -18,6 +19,9 @@ namespace CharacterSelect.Player
 
 		void Start()
 		{
+			//ゲームプレイ人数に満たない場合、オブジェクトを非表示にする。
+			CharacterSelectUtil.CheckPlayersNumAndHidden(gamepadNumber, gameObject);
+
 			rect = GetComponent<RectTransform>();
 		}
 
