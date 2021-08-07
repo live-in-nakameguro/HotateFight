@@ -20,7 +20,7 @@ namespace CharacterSelect.Player
 		void Start()
 		{
 			//ゲームプレイ人数に満たない場合、オブジェクトを非表示にする。
-			CharacterSelectUtil.checkPlayersNumAndHidden(gamepadNumber, gameObject);
+			CharacterSelectUtil.CheckPlayersNumAndHidden(gamepadNumber, gameObject);
 
 			rect = GetComponent<RectTransform>();
 		}

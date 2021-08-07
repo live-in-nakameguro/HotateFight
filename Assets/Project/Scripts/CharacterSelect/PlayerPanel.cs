@@ -23,7 +23,7 @@ namespace CharacterSelect.Panel
         //ゲームプレイ人数に満たない場合、オブジェクトを非表示にする。
         private void Start()
         {
-            CharacterSelectUtil.checkPlayersNumAndHidden(gamepadNumber, gameObject);
+            CharacterSelectUtil.CheckPlayersNumAndHidden(gamepadNumber, gameObject);
         }
 
         // Update is called once per frame

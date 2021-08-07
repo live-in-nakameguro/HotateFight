@@ -11,7 +11,7 @@ namespace Gamepad.CharacterSelect
          * オブジェクトの活性・非活性を変更する。
          * パネルやセレクターなど様々なファイルで使えるためUtilとする。
          */
-        public static void checkPlayersNumAndHidden(int playerOnwNumber, GameObject gameObject)
+        public static void CheckPlayersNumAndHidden(int playerOnwNumber, GameObject gameObject)
         {
             if (BattleSetting.NumberOfPlayers < playerOnwNumber)
             {
