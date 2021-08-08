@@ -17,6 +17,10 @@ namespace CharacterSelect.Panel
 
         // キャラクターの色
         public static Color characterColor;
+        // パンチするときの声
+        public static AudioClip punchVoice;
+        // 弾丸を発射する声
+        public static AudioClip shootingVoice;
 
         private bool isSelectCharacter = false;
 
@@ -39,6 +43,8 @@ namespace CharacterSelect.Panel
             {
                 character = CharacterPanel_HotateBlue.character;
                 characterColor = CharacterPanel_HotateBlue.characterColor;
+                punchVoice = CharacterPanel_HotateBlue.m_PunchVoice;
+                shootingVoice = CharacterPanel_HotateBlue.m_ShootingVoice;
                 transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Renderer>().materials[0].color = CharacterPanel_HotateBlue.characterColor;
                 transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Renderer>().materials[1].color = CharacterPanel_HotateBlue.characterColor;
                 transform.GetChild(0).gameObject.SetActive(true);
@@ -47,6 +53,8 @@ namespace CharacterSelect.Panel
             {
                 character = CharacterPanel_HotateBrown.character;
                 characterColor = CharacterPanel_HotateBrown.characterColor;
+                punchVoice = CharacterPanel_HotateBrown.m_PunchVoice;
+                shootingVoice = CharacterPanel_HotateBrown.m_ShootingVoice;
                 transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Renderer>().materials[0].color = CharacterPanel_HotateBrown.characterColor;
                 transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Renderer>().materials[1].color = CharacterPanel_HotateBrown.characterColor;
                 transform.GetChild(0).gameObject.SetActive(true);
@@ -55,6 +63,8 @@ namespace CharacterSelect.Panel
             {
                 character = CharacterPanel_HotateYellow.character;
                 characterColor = CharacterPanel_HotateYellow.characterColor;
+                punchVoice = CharacterPanel_HotateYellow.m_PunchVoice;
+                shootingVoice = CharacterPanel_HotateYellow.m_ShootingVoice;
                 transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Renderer>().materials[0].color = CharacterPanel_HotateYellow.characterColor;
                 transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Renderer>().materials[1].color = CharacterPanel_HotateYellow.characterColor;
                 transform.GetChild(0).gameObject.SetActive(true);
@@ -79,6 +89,8 @@ namespace CharacterSelect.Panel
                     isSelectCharacter = true;
                     Debug.Log(string.Format("Player{0}:{1}", gamepadNumber, character));
                     HotateColor.HotateColorDict[gamepadNumber] = characterColor;
+                    HotateVoice.HotatePunchVoice[gamepadNumber] = punchVoice;
+                    HotateVoice.HotateShootingVoice[gamepadNumber] = shootingVoice;
                 }
             }
         }

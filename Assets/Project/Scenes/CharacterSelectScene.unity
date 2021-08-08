@@ -1725,6 +1725,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 201c38abfe170e74997115feaf37dd38, type: 2}
+  punchVoice: {fileID: 0}
+  shootingVoice: {fileID: 8300000, guid: 0c7152fc80002614089817376276a527, type: 3}
 --- !u!1 &1429301993
 GameObject:
   m_ObjectHideFlags: 0
