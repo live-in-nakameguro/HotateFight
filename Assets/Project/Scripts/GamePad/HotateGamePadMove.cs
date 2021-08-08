@@ -25,6 +25,8 @@ public class HotateGamePadMove : MonoBehaviour
     //ToDo: 左スティックの上下・左右を別のメソッド化します。
     void Update()
     {
+        PrecventionRotation();
+
         //左スティックの左右で方向転換
         if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.LEFT_STICK_VER)) >= (GamepadButtonConfig.LEFT_STICK_VER_MAX * GamepadButtonConfig.FAST_VALUE_FOR_STICK))
         {
@@ -92,11 +94,24 @@ public class HotateGamePadMove : MonoBehaviour
         {
             onGround = true;
             inJumping = false;
+        }     
+    }
 
-            //着地時にひっくり帰らないようにする方法。思い付きなので、他の実装案検討中
-            float current_y = transform.localEulerAngles.y;
-            transform.rotation = Quaternion.Euler(0.0f, current_y, 0.0f);
-        }
+    void PrecventionRotation()
+    {
+        float current_x = transform.localEulerAngles.x;
+        float current_y = transform.localEulerAngles.y;
+        float current_z = transform.localEulerAngles.z;
+
+        float plusminus_x = -1;
+        float plusminus_z = -1;
+        if (current_x >= 0) plusminus_x = 1;
+        if (current_z >= 0) plusminus_z = 1;
+
+        float abs_current_x = Mathf.Abs(current_x);
+        float abs_current_z = Mathf.Abs(current_z);
+
+        transform.rotation = Quaternion.Euler(plusminus_x * abs_current_x * ( 29/30 ), current_y, plusminus_z * abs_current_z * ( 29/30 ));
     }
 
     string SetGamepadNumber(string gamepadKey)
