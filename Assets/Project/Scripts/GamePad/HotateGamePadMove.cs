@@ -12,8 +12,9 @@ public class HotateGamePadMove : MonoBehaviour
     [SerializeField] int gamepadNumber = 0;
 
     //キャラクターの操作状態を管理するフラグ
-    [SerializeField] bool inJumping = false;
-    [SerializeField] bool onGround = true;
+    private bool isFirstJumping = false;
+    private bool isSecondJumping = false;
+    private bool onGround = true;
 
     //rigidbodyオブジェクト格納用変数
     [SerializeField] Rigidbody rb;
@@ -57,19 +58,8 @@ public class HotateGamePadMove : MonoBehaviour
         //移動の実行
         transform.position += transform.forward * v;
 
-        //地面にいる時しかジャンプさせない
-        if (onGround)
-        {
-            //スペースボタンでジャンプする
-            //if (Input.GetKeyDown(GamepadButtonConfig.BUTTON_B))
-            if (Input.GetKeyDown(SetGamepadNumber(GamepadButtonConfig.BUTTON_B)))
-            {
-                inJumping = true;
-                onGround = false;
-                //ジャンプさせるため上方向に力を発生
-                rb.AddForce(transform.up * 300);
-            }
-        }
+        //ジャンプ
+        Jump();
 
         //左スティックの左右で方向転換
         if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.LEFT_STICK_HORI)) >= (GamepadButtonConfig.LEFT_STICK_HORI_MAX * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
@@ -90,11 +80,43 @@ public class HotateGamePadMove : MonoBehaviour
     //OnCollisionEnterは物体同士がぶつかった時に呼ばれる
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "Ground")
+        if (col.gameObject.tag == "Ground" || col.gameObject.tag == "Player")
         {
             onGround = true;
-            inJumping = false;
+            isFirstJumping = false;
+            isSecondJumping = false;
         }     
+    }
+
+    void OnCollisionExit(Collision col)
+    {
+        if (col.gameObject.tag == "Ground" || col.gameObject.tag == "Player")
+        {
+            onGround = false;
+            isFirstJumping = true;
+            isSecondJumping = false;
+        }
+    }
+
+    void Jump()
+    {
+        if (isSecondJumping) return;
+
+        if (Input.GetKeyDown(SetGamepadNumber(GamepadButtonConfig.BUTTON_B)))
+        {
+            onGround = false;
+            if (!isFirstJumping)
+            {
+                isFirstJumping = true;
+                rb.AddForce(transform.up * 300);
+            }
+            else
+            {
+                isSecondJumping = true;
+                rb.AddForce(transform.up * 300);
+            }
+                
+        }
     }
 
     void PrecventionRotation()
