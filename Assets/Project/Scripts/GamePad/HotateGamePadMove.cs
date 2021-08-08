@@ -26,7 +26,7 @@ public class HotateGamePadMove : MonoBehaviour
     //ToDo: 左スティックの上下・左右を別のメソッド化します。
     void Update()
     {
-        PreventionRotation();
+        PreventRotation();
 
         //左スティックの左右で方向転換
         if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.LEFT_STICK_VER)) >= (GamepadButtonConfig.LEFT_STICK_VER_MAX * GamepadButtonConfig.FAST_VALUE_FOR_STICK))
@@ -119,7 +119,7 @@ public class HotateGamePadMove : MonoBehaviour
         }
     }
 
-    void PreventionRotation()
+    void PreventRotation()
     {
         float current_x = transform.localEulerAngles.x;
         float current_y = transform.localEulerAngles.y;
