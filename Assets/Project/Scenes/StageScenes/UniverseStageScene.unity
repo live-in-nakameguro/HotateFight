@@ -5261,6 +5261,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8110435003292771070, guid: 7f74c49c919bedd4cb69bcf8b0c07dab, type: 3}
   m_PrefabInstance: {fileID: 461443900}
   m_PrefabAsset: {fileID: 0}
+--- !u!20 &461443902 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2127639142, guid: 7f74c49c919bedd4cb69bcf8b0c07dab, type: 3}
+  m_PrefabInstance: {fileID: 461443900}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &844886222
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5325,6 +5330,11 @@ PrefabInstance:
 --- !u!4 &844886223 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8110435003292771070, guid: ec8b2a242eb2978468da1de674f44334, type: 3}
+  m_PrefabInstance: {fileID: 844886222}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &844886224 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2127639142, guid: ec8b2a242eb2978468da1de674f44334, type: 3}
   m_PrefabInstance: {fileID: 844886222}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &893023809
@@ -5525,6 +5535,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8110435003292771070, guid: cfffffe832c458845b9e329c867da747, type: 3}
   m_PrefabInstance: {fileID: 1190421890}
   m_PrefabAsset: {fileID: 0}
+--- !u!20 &1190421892 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2127639142, guid: cfffffe832c458845b9e329c867da747, type: 3}
+  m_PrefabInstance: {fileID: 1190421890}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1245421345
 GameObject:
   m_ObjectHideFlags: 0
@@ -5710,6 +5725,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1401150485}
+  - component: {fileID: 1401150486}
   m_Layer: 0
   m_Name: Hotates
   m_TagString: Untagged
@@ -5735,6 +5751,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1401150486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401150484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcb480bc33033424daa30871c680a36e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1Camera: {fileID: 1523795451}
+  player2Camera: {fileID: 461443902}
+  player3Camera: {fileID: 844886224}
+  player4Camera: {fileID: 1190421892}
 --- !u!1001 &1523795449
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5799,6 +5831,11 @@ PrefabInstance:
 --- !u!4 &1523795450 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8110435003292771070, guid: 81b06f65c0545eb4f8ed5dc59de8f77c, type: 3}
+  m_PrefabInstance: {fileID: 1523795449}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &1523795451 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2127639142, guid: 81b06f65c0545eb4f8ed5dc59de8f77c, type: 3}
   m_PrefabInstance: {fileID: 1523795449}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1528397896
