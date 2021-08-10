@@ -17,6 +17,15 @@ namespace CharacterSelect.Panel
         // どのプレイヤーがキャラクターを選んだかどうか判断する
         public static Dictionary<int, bool> playerSelectCharacter;
 
+        // パンチするときの声
+        [SerializeField] AudioClip punchVoice;
+        // staticに変更
+        public static AudioClip m_PunchVoice;
+        // 弾丸を発射する声
+        [SerializeField] AudioClip shootingVoice;
+        // staticに変更
+        public static AudioClip m_ShootingVoice;
+
         static CharacterPanel_HotateBlue()
         {
             SceneManager.sceneLoaded += Init;
@@ -37,6 +46,8 @@ namespace CharacterSelect.Panel
         void Start()
         {
             characterColor = material.color;
+            m_PunchVoice = punchVoice;
+            m_ShootingVoice = shootingVoice;
         }
 
         // Update is called once per frame

@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Gamepad.Config;
+using Hotate;
 
 public class HotatePunch : MonoBehaviour
 {
     // SE
-    [SerializeField] AudioClip sound1;
+    [SerializeField] AudioClip punchVoice;
     AudioSource audioSource;
 
     [SerializeField] GameObject hotate_arm;
@@ -25,6 +26,10 @@ public class HotatePunch : MonoBehaviour
     {
         //Component‚ðŽæ“¾
         audioSource = GetComponent<AudioSource>();
+        if (HotateVoice.HotatePunchVoice[gamepadNumber] != null)
+        {
+            punchVoice = HotateVoice.HotatePunchVoice[gamepadNumber];
+        }
     }
 
     void Update()
@@ -79,7 +84,7 @@ public class HotatePunch : MonoBehaviour
 
     void PunchVoiceEffect()
     {
-        audioSource.PlayOneShot(sound1);
+        audioSource.PlayOneShot(punchVoice);
     }
 
     string SetGamepadNumber(string gamepadKey)

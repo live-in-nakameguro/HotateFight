@@ -35,7 +35,7 @@ namespace ScoreBourdScene
             IsReadyDict = new Dictionary<int, bool>()
             {
                 { 1, false},
-                { 2, false}, // デバッグの際は、ここをtrueにすれば、1人プレイ可能
+                { 2, true}, // デバッグの際は、ここをtrueにすれば、1人プレイ可能
                 { 3, false},
                 { 4, false},
             };

@@ -8,7 +8,7 @@ namespace Hotate.Shooting
     public class HotateShooting : MonoBehaviour
     {
         // SE
-        [SerializeField] AudioClip sound1;
+        [SerializeField] AudioClip shootingVoice;
         AudioSource audioSource;
 
         //ToDo ‚Ç‚±‚©‚Å‚Ü‚Æ‚ß‚½‚¢
@@ -38,6 +38,10 @@ namespace Hotate.Shooting
         {
             //Component‚ðŽæ“¾
             audioSource = GetComponent<AudioSource>();
+            if (HotateVoice.HotateShootingVoice[gamepadNumber] != null)
+            {
+                shootingVoice = HotateVoice.HotateShootingVoice[gamepadNumber];
+            }
         }
 
         // Update is called once per frame
@@ -76,7 +80,7 @@ namespace Hotate.Shooting
 
         void ShootingVoiceEffect()
         {
-            audioSource.PlayOneShot(sound1);
+            audioSource.PlayOneShot(shootingVoice);
         }
 
         void ReloadBullet()

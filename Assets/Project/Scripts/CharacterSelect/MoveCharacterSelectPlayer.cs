@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Gamepad.Config;
 using Gamepad.CharacterSelect;
+using CharacterSelect.Panel;
 
 namespace CharacterSelect.Player
 {
@@ -27,6 +28,13 @@ namespace CharacterSelect.Player
 
 		void Update()
 		{
+			if (!PlayerPanel.playerSelectCharacter[gamepadNumber]) {
+				Move();
+			}
+		}
+
+		void Move()
+        {
 			//@ˆÚ“®ƒL[‚ğ‰Ÿ‚µ‚Ä‚¢‚È‚¯‚ê‚Î‰½‚à‚µ‚È‚¢
 			if (Mathf.Approximately(Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.LEFT_STICK_HORI)), 0f) && Mathf.Approximately(Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.LEFT_STICK_VER)), 0f))
 			{

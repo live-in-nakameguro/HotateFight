@@ -5544,7 +5544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deff48688eceab145b1a2f056789cbed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound1: {fileID: 8300000, guid: 5d61d0bae98a9ec4885550107f51a2be, type: 3}
+  punchVoice: {fileID: 8300000, guid: 5d61d0bae98a9ec4885550107f51a2be, type: 3}
   hotate_arm: {fileID: 1240466821}
   gamepadNumber: 2
 --- !u!114 &684281281
@@ -5574,7 +5574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afea7d2cf45213c49a28618e2e49de87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound1: {fileID: 8300000, guid: a424ff9be8daf074c8dcf2d8a4fb28a3, type: 3}
+  shootingVoice: {fileID: 8300000, guid: a424ff9be8daf074c8dcf2d8a4fb28a3, type: 3}
   gamepadNumber: 2
   bullet: {fileID: 7880806400724033804, guid: 0cd1410f05f76bd4d96d242591e5f24e, type: 3}
   muzzle: {fileID: 327956248}

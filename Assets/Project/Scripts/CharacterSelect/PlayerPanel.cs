@@ -5,32 +5,66 @@ using UnityEngine;
 using Hotate;
 using UnityEngine.SceneManagement;
 using Gamepad.CharacterSelect;
+using UnityEngine.UI;
+using GameScenes.SettingAndResultBattle;
 
 namespace CharacterSelect.Panel
 {
     public class PlayerPanel : MonoBehaviour
     {
+        AudioSource audioSource;
+
         //GamepadNumberの指定(0を選択した場合、すべてのゲームパッドで操作可能になる。)
         [SerializeField] int gamepadNumber = 0;
 
         private Characters character = Characters.NoSelect;
 
         // キャラクターの色
-        public static Color characterColor;
+        private Color characterColor;
+        // パンチするときの声
+        private AudioClip punchVoice;
+        // 弾丸を発射する声
+        private AudioClip shootingVoice;
 
-        private bool isSelectCharacter = false;
+        public Text TextFrame;
+
+        public static Dictionary<int, bool> playerSelectCharacter;
+
+        private bool isAllSelected = false;
+
+        static PlayerPanel()
+        {
+            SceneManager.sceneLoaded += Init;
+        }
+
+        private static void Init(Scene loadingScene, LoadSceneMode loadSceneMode)
+        {
+            playerSelectCharacter = new Dictionary<int, bool>()
+            {
+                { 1,false},
+                { 2,true}, // デバッグの際は、ここをtrueにすれば、1人プレイ可能
+                { 3,false},
+                { 4,false}
+            };
+        }
 
         //ゲームプレイ人数に満たない場合、オブジェクトを非表示にする。
         private void Start()
         {
+            audioSource = GetComponent<AudioSource>();
             CharacterSelectUtil.CheckPlayersNumAndHidden(gamepadNumber, gameObject);
+            TextFrame.text = "OK";
         }
 
         // Update is called once per frame
         void Update()
         {
-            ViewCharacter();
-            SelectCharacter();
+            if (!isAllSelected) {
+                BackScene(); // SelectCharacter()の後ろでBackScene()を実装すると、不具合が発生するので注意。
+                ViewCharacter();
+                SelectCharacter();
+                AllSelected();
+            }
         }
 
         void ViewCharacter()
@@ -39,6 +73,8 @@ namespace CharacterSelect.Panel
             {
                 character = CharacterPanel_HotateBlue.character;
                 characterColor = CharacterPanel_HotateBlue.characterColor;
+                punchVoice = CharacterPanel_HotateBlue.m_PunchVoice;
+                shootingVoice = CharacterPanel_HotateBlue.m_ShootingVoice;
                 transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Renderer>().materials[0].color = CharacterPanel_HotateBlue.characterColor;
                 transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Renderer>().materials[1].color = CharacterPanel_HotateBlue.characterColor;
                 transform.GetChild(0).gameObject.SetActive(true);
@@ -47,6 +83,8 @@ namespace CharacterSelect.Panel
             {
                 character = CharacterPanel_HotateBrown.character;
                 characterColor = CharacterPanel_HotateBrown.characterColor;
+                punchVoice = CharacterPanel_HotateBrown.m_PunchVoice;
+                shootingVoice = CharacterPanel_HotateBrown.m_ShootingVoice;
                 transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Renderer>().materials[0].color = CharacterPanel_HotateBrown.characterColor;
                 transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Renderer>().materials[1].color = CharacterPanel_HotateBrown.characterColor;
                 transform.GetChild(0).gameObject.SetActive(true);
@@ -55,6 +93,8 @@ namespace CharacterSelect.Panel
             {
                 character = CharacterPanel_HotateYellow.character;
                 characterColor = CharacterPanel_HotateYellow.characterColor;
+                punchVoice = CharacterPanel_HotateYellow.m_PunchVoice;
+                shootingVoice = CharacterPanel_HotateYellow.m_ShootingVoice;
                 transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Renderer>().materials[0].color = CharacterPanel_HotateYellow.characterColor;
                 transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Renderer>().materials[1].color = CharacterPanel_HotateYellow.characterColor;
                 transform.GetChild(0).gameObject.SetActive(true);
@@ -67,8 +107,13 @@ namespace CharacterSelect.Panel
 
         void SelectCharacter()
         {
-            if (isSelectCharacter)
+            if (playerSelectCharacter[gamepadNumber])
             {
+                if (Input.GetKeyDown(SetGamepadNumber(GamepadButtonConfig.BUTTON_B)))
+                {
+                    playerSelectCharacter[gamepadNumber] = false;
+                    TextFrame.color = Color.black;
+                }
                 return;
             }
 
@@ -76,9 +121,45 @@ namespace CharacterSelect.Panel
             {
                 if (Input.GetKeyDown(SetGamepadNumber(GamepadButtonConfig.BUTTON_A)))
                 {
-                    isSelectCharacter = true;
+                    audioSource.PlayOneShot(punchVoice);
+                    playerSelectCharacter[gamepadNumber] = true;
+                    TextFrame.color = Color.red;
                     Debug.Log(string.Format("Player{0}:{1}", gamepadNumber, character));
                     HotateColor.HotateColorDict[gamepadNumber] = characterColor;
+                    HotateVoice.HotatePunchVoice[gamepadNumber] = punchVoice;
+                    HotateVoice.HotateShootingVoice[gamepadNumber] = shootingVoice;
+                }
+            }
+        }
+
+        void AllSelected()
+        {
+            for (int i = 1; i <= BattleSetting.NumberOfPlayers; i++)
+            {
+                if (!playerSelectCharacter[i])
+                {
+                    return;
+                }
+            }
+
+            // キャラ選択後すぐに遷移すると、選択された際の音声が切れてしまう対策
+            isAllSelected = true;
+            Invoke(nameof(ToGameStartRuleScene),1.0f);
+        }
+
+        void ToGameStartRuleScene()
+        {
+            SceneManager.LoadScene("GameStartRuleScene");
+        }
+
+        // キャラクター選んでいない状態でBボタンが押された場合、プレイヤー人数セレクトシーンに遷移する。
+        void BackScene()
+        {
+            if (Input.GetKeyDown(SetGamepadNumber(GamepadButtonConfig.BUTTON_B)))
+            {
+                if (!playerSelectCharacter[gamepadNumber])
+                {
+                    SceneManager.LoadScene("PlayerNumSelectScene");
                 }
             }
         }
