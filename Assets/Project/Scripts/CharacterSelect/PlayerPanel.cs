@@ -5,29 +5,58 @@ using UnityEngine;
 using Hotate;
 using UnityEngine.SceneManagement;
 using Gamepad.CharacterSelect;
+using UnityEngine.UI;
 
 namespace CharacterSelect.Panel
 {
     public class PlayerPanel : MonoBehaviour
     {
+        AudioSource audioSource;
+
         //GamepadNumberの指定(0を選択した場合、すべてのゲームパッドで操作可能になる。)
         [SerializeField] int gamepadNumber = 0;
 
         private Characters character = Characters.NoSelect;
 
         // キャラクターの色
-        public static Color characterColor;
+        private Color characterColor;
         // パンチするときの声
-        public static AudioClip punchVoice;
+        private AudioClip punchVoice;
         // 弾丸を発射する声
-        public static AudioClip shootingVoice;
+        private AudioClip shootingVoice;
 
-        private bool isSelectCharacter = false;
+        public Text TextFrame;
+
+        public static Dictionary<int, bool> playerSelectCharacter = new Dictionary<int, bool>()
+            {
+                { 1, false},
+                { 2, false},
+                { 3, false},
+                { 4, false},
+            };
+
+        static PlayerPanel()
+        {
+            SceneManager.sceneLoaded += Init;
+        }
+
+        private static void Init(Scene loadingScene, LoadSceneMode loadSceneMode)
+        {
+            playerSelectCharacter = new Dictionary<int, bool>()
+            {
+                { 1,false},
+                { 2,false},
+                { 3,false},
+                { 4,false}
+            };
+        }
 
         //ゲームプレイ人数に満たない場合、オブジェクトを非表示にする。
         private void Start()
         {
+            audioSource = GetComponent<AudioSource>();
             CharacterSelectUtil.CheckPlayersNumAndHidden(gamepadNumber, gameObject);
+            TextFrame.text = "OK";
         }
 
         // Update is called once per frame
@@ -77,8 +106,13 @@ namespace CharacterSelect.Panel
 
         void SelectCharacter()
         {
-            if (isSelectCharacter)
+            if (playerSelectCharacter[gamepadNumber])
             {
+                if (Input.GetKeyDown(SetGamepadNumber(GamepadButtonConfig.BUTTON_B)))
+                {
+                    playerSelectCharacter[gamepadNumber] = false;
+                    TextFrame.color = Color.black;
+                }
                 return;
             }
 
@@ -86,7 +120,9 @@ namespace CharacterSelect.Panel
             {
                 if (Input.GetKeyDown(SetGamepadNumber(GamepadButtonConfig.BUTTON_A)))
                 {
-                    isSelectCharacter = true;
+                    audioSource.PlayOneShot(punchVoice);
+                    playerSelectCharacter[gamepadNumber] = true;
+                    TextFrame.color = Color.red;
                     Debug.Log(string.Format("Player{0}:{1}", gamepadNumber, character));
                     HotateColor.HotateColorDict[gamepadNumber] = characterColor;
                     HotateVoice.HotatePunchVoice[gamepadNumber] = punchVoice;
