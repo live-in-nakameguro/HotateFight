@@ -6,6 +6,7 @@ using Hotate;
 using UnityEngine.SceneManagement;
 using Gamepad.CharacterSelect;
 using UnityEngine.UI;
+using GameScenes.SettingAndResultBattle;
 
 namespace CharacterSelect.Panel
 {
@@ -27,13 +28,9 @@ namespace CharacterSelect.Panel
 
         public Text TextFrame;
 
-        public static Dictionary<int, bool> playerSelectCharacter = new Dictionary<int, bool>()
-            {
-                { 1, false},
-                { 2, false},
-                { 3, false},
-                { 4, false},
-            };
+        public static Dictionary<int, bool> playerSelectCharacter;
+
+        private bool isAllSelected = false;
 
         static PlayerPanel()
         {
@@ -45,7 +42,7 @@ namespace CharacterSelect.Panel
             playerSelectCharacter = new Dictionary<int, bool>()
             {
                 { 1,false},
-                { 2,false},
+                { 2,true}, // デバッグの際は、ここをtrueにすれば、1人プレイ可能
                 { 3,false},
                 { 4,false}
             };
@@ -62,8 +59,12 @@ namespace CharacterSelect.Panel
         // Update is called once per frame
         void Update()
         {
-            ViewCharacter();
-            SelectCharacter();
+            if (!isAllSelected) {
+                BackScene(); // SelectCharacter()の後ろでBackScene()を実装すると、不具合が発生するので注意。
+                ViewCharacter();
+                SelectCharacter();
+                AllSelected();
+            }
         }
 
         void ViewCharacter()
@@ -127,6 +128,38 @@ namespace CharacterSelect.Panel
                     HotateColor.HotateColorDict[gamepadNumber] = characterColor;
                     HotateVoice.HotatePunchVoice[gamepadNumber] = punchVoice;
                     HotateVoice.HotateShootingVoice[gamepadNumber] = shootingVoice;
+                }
+            }
+        }
+
+        void AllSelected()
+        {
+            for (int i = 1; i <= BattleSetting.NumberOfPlayers; i++)
+            {
+                if (!playerSelectCharacter[i])
+                {
+                    return;
+                }
+            }
+
+            // キャラ選択後すぐに遷移すると、選択された際の音声が切れてしまう対策
+            isAllSelected = true;
+            Invoke(nameof(ToGameStartRuleScene),1.0f);
+        }
+
+        void ToGameStartRuleScene()
+        {
+            SceneManager.LoadScene("GameStartRuleScene");
+        }
+
+        // キャラクター選んでいない状態でBボタンが押された場合、プレイヤー人数セレクトシーンに遷移する。
+        void BackScene()
+        {
+            if (Input.GetKeyDown(SetGamepadNumber(GamepadButtonConfig.BUTTON_B)))
+            {
+                if (!playerSelectCharacter[gamepadNumber])
+                {
+                    SceneManager.LoadScene("PlayerNumSelectScene");
                 }
             }
         }
