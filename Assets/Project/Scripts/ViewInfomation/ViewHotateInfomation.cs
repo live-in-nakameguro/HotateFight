@@ -16,6 +16,8 @@ public class ViewHotateInfomation : MonoBehaviour
             {
                 { 1, HotateLife1.hotateHP},
                 { 2, HotateLife2.hotateHP},
+                { 3, HotateLife3.hotateHP},
+                { 4, HotateLife4.hotateHP}
             };
 
         //シーンに変数を渡せるかのテストをするための仮の文字です。

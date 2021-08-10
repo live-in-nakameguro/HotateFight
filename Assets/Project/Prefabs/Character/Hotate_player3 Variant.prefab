@@ -4864,7 +4864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90b144f5229638e47bd7bf60682b36bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamepadNumber: 1
+  gamepadNumber: 3
   horizontalRotNode: {fileID: 1081771784}
   verticalRotNode: {fileID: 851490099}
   dollyNode: {fileID: 1207639775}
@@ -5532,21 +5532,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-7647686062586441180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8918777658064025668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e67fa5411234f8479a6718b642c0984, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GameObjectName: Hotate_player1 Variant
-  DeadPointY: -10
-  gamepadNumber: 1
 --- !u!114 &684281278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5561,7 +5546,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound1: {fileID: 8300000, guid: 5d61d0bae98a9ec4885550107f51a2be, type: 3}
   hotate_arm: {fileID: 1240466821}
-  gamepadNumber: 1
+  gamepadNumber: 3
 --- !u!114 &684281281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5575,7 +5560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 684281279}
-  gamepadNumber: 1
+  gamepadNumber: 3
   rb: {fileID: 684281276}
 --- !u!114 &684281285
 MonoBehaviour:
@@ -5590,12 +5575,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sound1: {fileID: 8300000, guid: a424ff9be8daf074c8dcf2d8a4fb28a3, type: 3}
-  gamepadNumber: 1
+  gamepadNumber: 3
   bullet: {fileID: 7880806400724033804, guid: 0cd1410f05f76bd4d96d242591e5f24e, type: 3}
   muzzle: {fileID: 327956248}
   speed: 1000
   reloadTime: 2
---- !u!114 &4809717567762739005
+--- !u!114 &1310425266252983399
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5604,13 +5589,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 8918777658064025668}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cca089847f948e4997c2b3cadece463, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e67fa5411234f8479a6718b642c0984, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObjectName: Hotate_player2 Variant
+  DeadPointY: -10
+  gamepadNumber: 3
+--- !u!114 &6394493272355057443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8918777658064025668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1199f37a2d149f04cbfd72cfd1b62fc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isInnvincible: 0
   isDead: 0
   rb: {fileID: 684281276}
-  gamepadNumber: 1
+  gamepadNumber: 3
 --- !u!114 &6996986204744132494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5623,7 +5623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 161dee86d00351b419e86893e049056b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamepadNumber: 1
+  gamepadNumber: 3
 --- !u!1001 &8576178427118292311
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5935,7 +5935,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 8e6bcbc31a4834044b44666a313abb55, type: 2}
     - target: {fileID: 919132149155446097, guid: d7f7e5f412754f2478adafc3c6a054f1, type: 3}
       propertyPath: m_Name
-      value: Hotate_player1 Variant
+      value: Hotate_player3 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d7f7e5f412754f2478adafc3c6a054f1, type: 3}
       propertyPath: m_TagString
