@@ -6,7 +6,7 @@ namespace GameScenes.SettingAndResultBattle
 { 
     public class BattleSetting
     {
-        private static int numberOfPlayers = 2;
+        private static int numberOfPlayers = 3;
         private static int numberOfWins = 3;
         private static float hotateHP = 300.0f;
         private static bool isRondom = true; // Rondom or Select

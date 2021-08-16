@@ -60,9 +60,25 @@ namespace Item
             {
                 if (Input.GetKeyDown(SetGamepadNumber(GamepadButtonConfig.BUTTON_Y)))
                 {
-                    Debug.Log("アイテム使用：" + playerItemDict[gamepadNumber]);
+                    ExecuteItem(playerItemDict[gamepadNumber]);
                     playerItemDict[gamepadNumber] = ItemSetting.Items.None;
                 }
+            }
+        }
+
+        void ExecuteItem(ItemSetting.Items item)
+        {
+            Debug.Log("アイテム使用：" + item);
+            switch (item) 
+            {
+                case ItemSetting.Items.None:
+                    break;
+                case ItemSetting.Items.Bomb:
+                    break;
+                case ItemSetting.Items.LandMines:
+                    break;
+                default:
+                    break;
             }
         }
 
