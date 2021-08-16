@@ -67,7 +67,7 @@ namespace Gamepad.Config {
     public static class GamepadCameraConfig
     {
         //水平方向のカメラスピード
-        public const float HORIZONTAL_CAMERA_SPEED = 3.0f;
+        public const float HORIZONTAL_CAMERA_SPEED = 2.0f;
         public const float HORIZONTAL_CAMERA_LOW_SPEED = HORIZONTAL_CAMERA_SPEED / 2.0f;
 
         //垂直方向のカメラスピード
