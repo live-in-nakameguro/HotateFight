@@ -58,7 +58,7 @@ namespace Hotate.Shooting
             }
 
             // z ÉLÅ[Ç™âüÇ≥ÇÍÇΩéû
-            if (Input.GetKeyDown(SetGamepadNumber(GamepadButtonConfig.BUTTON_X)))
+            if ((Input.GetKeyDown(SetGamepadNumber(GamepadButtonConfig.BUTTON_X))) || (gamepadNumber == 1 & Input.GetKeyDown(KeyCode.Y)))
             {
                 ShootingVoiceEffect();
 

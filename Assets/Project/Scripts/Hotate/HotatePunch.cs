@@ -44,7 +44,7 @@ public class HotatePunch : MonoBehaviour
 
     void Execute()
     {
-        if (Input.GetKeyDown(SetGamepadNumber(GamepadButtonConfig.BUTTON_A)) & punch_execute_flg == false)
+        if ((Input.GetKeyDown(SetGamepadNumber(GamepadButtonConfig.BUTTON_A)) || (gamepadNumber == 1 && Input.GetKeyDown(KeyCode.U))) & punch_execute_flg == false)
         {
             punch_execute_flg = true;
             hotate_arm.SetActive(true);
