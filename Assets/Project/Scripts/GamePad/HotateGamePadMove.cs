@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Gamepad.Config;
-using Gamepad.Utils;
+using Common.Utils;
 
 public class HotateGamePadMove : MonoBehaviour
 {
@@ -32,25 +32,25 @@ public class HotateGamePadMove : MonoBehaviour
         PreventRotation();
 
         //左スティックの上下で移動
-        if (HotateGamepadUtils.isPressedDashDownMoving(gamepadNumber))
+        if (HotateMovingUtils.isPressedDashDownMoving(gamepadNumber))
         {
             v = Time.deltaTime * GamepadHotateConfig.DASH_SPPED;
             _animator.SetBool("Running", true);
             ResetCameraHorizontalPosition();
         }
-        else if (HotateGamepadUtils.isPressedDashUpMoving(gamepadNumber))
+        else if (HotateMovingUtils.isPressedDashUpMoving(gamepadNumber))
         {
             v = -Time.deltaTime * GamepadHotateConfig.DASH_SPPED;
             _animator.SetBool("Running", true);
             ResetCameraHorizontalPosition();
         }
-        else if (HotateGamepadUtils.isPressedDownMoving(gamepadNumber))
+        else if (HotateMovingUtils.isPressedDownMoving(gamepadNumber))
         {
             v = Time.deltaTime * GamepadHotateConfig.WALK_SPPED;
             _animator.SetBool("Running", true);
             ResetCameraHorizontalPosition();
         }
-        else if (HotateGamepadUtils.isPressedUpMoving(gamepadNumber))
+        else if (HotateMovingUtils.isPressedUpMoving(gamepadNumber))
         {
             v = -Time.deltaTime * GamepadHotateConfig.WALK_SPPED;
             _animator.SetBool("Running", true);
@@ -69,12 +69,12 @@ public class HotateGamePadMove : MonoBehaviour
         Jump();
 
         //左スティックの左右で方向転換
-        if (HotateGamepadUtils.isPressedRightMoving(gamepadNumber))
+        if (HotateMovingUtils.isPressedRightMoving(gamepadNumber))
         {
             h = Time.deltaTime * GamepadHotateConfig.ANGLE_CHAGE_SPPED;
             ResetCameraHorizontalPosition();
         }
-        else if (HotateGamepadUtils.isPressedLeftMoving(gamepadNumber))
+        else if (HotateMovingUtils.isPressedLeftMoving(gamepadNumber))
         {
             h = -Time.deltaTime * GamepadHotateConfig.ANGLE_CHAGE_SPPED;
             ResetCameraHorizontalPosition();
@@ -140,7 +140,7 @@ public class HotateGamePadMove : MonoBehaviour
     {
         if (isSecondJumping) return;
 
-        if (HotateGamepadUtils.isPressedJump(gamepadNumber))
+        if (HotateMovingUtils.isPressedJump(gamepadNumber))
         {
             onGround = false;
             if (!isFirstJumping)

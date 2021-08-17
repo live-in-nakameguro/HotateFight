@@ -4814,7 +4814,6 @@ GameObject:
   m_Component:
   - component: {fileID: 187478531}
   - component: {fileID: 187478533}
-  - component: {fileID: 6195056721334490424}
   m_Layer: 0
   m_Name: RootNode
   m_TagString: Untagged
@@ -4850,21 +4849,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gamepadNumber: 1
-  horizontalRotNode: {fileID: 1081771784}
-  verticalRotNode: {fileID: 851490099}
-  dollyNode: {fileID: 1207639775}
---- !u!114 &6195056721334490424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 187478530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33baa99bd27467745931a39345942039, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   horizontalRotNode: {fileID: 1081771784}
   verticalRotNode: {fileID: 851490099}
   dollyNode: {fileID: 1207639775}
