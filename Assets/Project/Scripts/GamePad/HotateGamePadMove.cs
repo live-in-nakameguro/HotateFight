@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Gamepad.Config;
+using Gamepad.Utils;
 
 public class HotateGamePadMove : MonoBehaviour
 {
@@ -31,25 +32,25 @@ public class HotateGamePadMove : MonoBehaviour
         PreventRotation();
 
         //左スティックの上下で移動
-        if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.LEFT_STICK_VER)) >= (GamepadButtonConfig.LEFT_STICK_VER_MAX * GamepadButtonConfig.FAST_VALUE_FOR_STICK))
+        if (HotateGamepadUtils.isPressedDashDownMoving(gamepadNumber))
         {
             v = Time.deltaTime * GamepadHotateConfig.DASH_SPPED;
             _animator.SetBool("Running", true);
             ResetCameraHorizontalPosition();
         }
-        else if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.LEFT_STICK_VER)) <= (GamepadButtonConfig.LEFT_STICK_VER_MIN * GamepadButtonConfig.FAST_VALUE_FOR_STICK))
+        else if (HotateGamepadUtils.isPressedDashUpMoving(gamepadNumber))
         {
             v = -Time.deltaTime * GamepadHotateConfig.DASH_SPPED;
             _animator.SetBool("Running", true);
             ResetCameraHorizontalPosition();
         }
-        else if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.LEFT_STICK_VER)) >= (GamepadButtonConfig.LEFT_STICK_VER_MAX * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
+        else if (HotateGamepadUtils.isPressedDownMoving(gamepadNumber))
         {
             v = Time.deltaTime * GamepadHotateConfig.WALK_SPPED;
             _animator.SetBool("Running", true);
             ResetCameraHorizontalPosition();
         }
-        else if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.LEFT_STICK_VER)) <= (GamepadButtonConfig.LEFT_STICK_VER_MIN * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
+        else if (HotateGamepadUtils.isPressedUpMoving(gamepadNumber))
         {
             v = -Time.deltaTime * GamepadHotateConfig.WALK_SPPED;
             _animator.SetBool("Running", true);
@@ -68,12 +69,12 @@ public class HotateGamePadMove : MonoBehaviour
         Jump();
 
         //左スティックの左右で方向転換
-        if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.LEFT_STICK_HORI)) >= (GamepadButtonConfig.LEFT_STICK_HORI_MAX * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
+        if (HotateGamepadUtils.isPressedRightMoving(gamepadNumber))
         {
             h = Time.deltaTime * GamepadHotateConfig.ANGLE_CHAGE_SPPED;
             ResetCameraHorizontalPosition();
         }
-        else if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.LEFT_STICK_HORI)) <= (GamepadButtonConfig.LEFT_STICK_HORI_MIN * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
+        else if (HotateGamepadUtils.isPressedLeftMoving(gamepadNumber))
         {
             h = -Time.deltaTime * GamepadHotateConfig.ANGLE_CHAGE_SPPED;
             ResetCameraHorizontalPosition();
@@ -139,7 +140,7 @@ public class HotateGamePadMove : MonoBehaviour
     {
         if (isSecondJumping) return;
 
-        if (Input.GetKeyDown(SetGamepadNumber(GamepadButtonConfig.BUTTON_B)))
+        if (HotateGamepadUtils.isPressedJump(gamepadNumber))
         {
             onGround = false;
             if (!isFirstJumping)
@@ -172,14 +173,4 @@ public class HotateGamePadMove : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(plusminus_x * abs_current_x * ( 29/30 ), current_y, plusminus_z * abs_current_z * ( 29/30 ));
     }
-
-    string SetGamepadNumber(string gamepadKey)
-    {
-        string gamepadNumberStr = "";
-        if (gamepadNumber != 0) 
-        {
-            gamepadNumberStr = $" {gamepadNumber}";
-        }
-        return string.Format(gamepadKey, gamepadNumberStr);
-    } 
 }

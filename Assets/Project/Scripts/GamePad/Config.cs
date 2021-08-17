@@ -62,6 +62,16 @@ namespace Gamepad.Config {
         public const string BUTTON_PULS = "joystick{0} button 9";
         public const string BUTTON_PHOTO = "joystick{0} button 13";
         public const string BUTTON_HOME = "joystick{0} button 12";
+
+        public static string SetGamepadNumber(string gamepadKey, int gamepadNumber)
+        {
+            string gamepadNumberStr = "";
+            if (gamepadNumber != 0)
+            {
+                gamepadNumberStr = $" {gamepadNumber}";
+            }
+            return string.Format(gamepadKey, gamepadNumberStr);
+        }
     }
 
     public static class GamepadCameraConfig

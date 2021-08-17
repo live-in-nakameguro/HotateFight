@@ -5642,21 +5642,6 @@ MonoBehaviour:
   isDead: 0
   rb: {fileID: 684281276}
   gamepadNumber: 1
---- !u!114 &6182423036778792554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8918777658064025668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 842e59181f1c9e6408ac7e55b777a248, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 684281279}
-  horizontalRotNode: {fileID: 1081771783}
-  rb: {fileID: 684281276}
 --- !u!114 &6996986204744132494
 MonoBehaviour:
   m_ObjectHideFlags: 0
