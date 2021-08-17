@@ -186,6 +186,34 @@ namespace Common.Utils
 
             return false;
         }
+    }
 
+    /* パンチ,ビーム,アイテム利用など
+     * ホタテのカメラやホタテ本体の移動以外のアクションを定義する。
+     */
+    public class HotateActionsUtils
+    {
+        public static bool isPressedShooting(int gamepadNumber)
+        {
+            if ((Input.GetKeyDown(GamepadButtonConfig.SetGamepadNumber(GamepadButtonConfig.BUTTON_X, gamepadNumber))) || (gamepadNumber == 1 && Input.GetKeyDown(KeyCode.Y)))
+                return true;
+
+            return false;
+        }
+
+        public static bool isPressedPunch(int gamepadNumber)
+        {
+            if (Input.GetKeyDown(GamepadButtonConfig.SetGamepadNumber(GamepadButtonConfig.BUTTON_A, gamepadNumber)) || (gamepadNumber == 1 && Input.GetKeyDown(KeyCode.U)))
+                return true;
+
+            return false;
+        }
+
+        public static bool isPressedUsingItems(int gamepadNumber)
+        {
+            /*アイテム利用のボタン定義を実装する。
+             */
+            return false;
+        }
     }
 }

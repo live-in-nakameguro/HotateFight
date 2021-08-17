@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Gamepad.Config;
 using Hotate;
+using Common.Utils;
 
 public class HotatePunch : MonoBehaviour
 {
@@ -44,7 +45,7 @@ public class HotatePunch : MonoBehaviour
 
     void Execute()
     {
-        if ((Input.GetKeyDown(SetGamepadNumber(GamepadButtonConfig.BUTTON_A)) || (gamepadNumber == 1 && Input.GetKeyDown(KeyCode.U))) & punch_execute_flg == false)
+        if ((HotateActionsUtils.isPressedPunch(gamepadNumber)) & punch_execute_flg == false)
         {
             punch_execute_flg = true;
             hotate_arm.SetActive(true);
@@ -68,7 +69,7 @@ public class HotatePunch : MonoBehaviour
 
     void PunchUp()
     {
-        if(punch_down_end_flg == true)
+        if (punch_down_end_flg == true)
         {
             hotate_arm.transform.Rotate(punch_speed, 0.0f, 0.0f);
             frame_count += 1;
@@ -87,13 +88,4 @@ public class HotatePunch : MonoBehaviour
         audioSource.PlayOneShot(punchVoice);
     }
 
-    string SetGamepadNumber(string gamepadKey)
-    {
-        string gamepadNumberStr = "";
-        if (gamepadNumber != 0)
-        {
-            gamepadNumberStr = $" {gamepadNumber}";
-        }
-        return string.Format(gamepadKey, gamepadNumberStr);
-    }
 }

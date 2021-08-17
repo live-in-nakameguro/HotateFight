@@ -2,6 +2,7 @@ using Gamepad.Config;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Common.Utils;
 
 namespace Hotate.Shooting
 {
@@ -58,7 +59,7 @@ namespace Hotate.Shooting
             }
 
             // z ÉLÅ[Ç™âüÇ≥ÇÍÇΩéû
-            if ((Input.GetKeyDown(SetGamepadNumber(GamepadButtonConfig.BUTTON_X))) || (gamepadNumber == 1 & Input.GetKeyDown(KeyCode.Y)))
+            if (HotateActionsUtils.isPressedShooting(gamepadNumber))
             {
                 ShootingVoiceEffect();
 
@@ -86,16 +87,6 @@ namespace Hotate.Shooting
         void ReloadBullet()
         {
             bulletNum += 1;
-        }
-
-        string SetGamepadNumber(string gamepadKey)
-        {
-            string gamepadNumberStr = "";
-            if (gamepadNumber != 0)
-            {
-                gamepadNumberStr = $" {gamepadNumber}";
-            }
-            return string.Format(gamepadKey, gamepadNumberStr);
         }
 
     }
