@@ -12,7 +12,7 @@ namespace Common.Utils
             if (Input.GetAxis(GamepadButtonConfig.SetGamepadNumber(GamepadButtonConfig.LEFT_STICK_VER, gamepadNumber)) <= (GamepadButtonConfig.LEFT_STICK_VER_MIN * GamepadButtonConfig.FAST_VALUE_FOR_STICK))
                 return true;
 
-            if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift) && gamepadNumber == 1)
+            if (gamepadNumber == 1 && Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W))
                 return true;
 
             return false;
@@ -23,7 +23,7 @@ namespace Common.Utils
             if (Input.GetAxis(GamepadButtonConfig.SetGamepadNumber(GamepadButtonConfig.LEFT_STICK_VER, gamepadNumber)) >= (GamepadButtonConfig.LEFT_STICK_VER_MAX * GamepadButtonConfig.FAST_VALUE_FOR_STICK))
                 return true;
 
-            if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.LeftShift) && gamepadNumber == 1)
+            if (gamepadNumber == 1 && Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.S))
                 return true;
 
             return false;
@@ -34,7 +34,7 @@ namespace Common.Utils
             if (Input.GetAxis(GamepadButtonConfig.SetGamepadNumber(GamepadButtonConfig.LEFT_STICK_VER, gamepadNumber)) <= (GamepadButtonConfig.LEFT_STICK_VER_MIN * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
                 return true;
 
-            if (Input.GetKey(KeyCode.W) && gamepadNumber == 1)
+            if (gamepadNumber == 1 && Input.GetKey(KeyCode.W))
                 return true;
 
             return false;
@@ -45,7 +45,7 @@ namespace Common.Utils
             if (Input.GetAxis(GamepadButtonConfig.SetGamepadNumber(GamepadButtonConfig.LEFT_STICK_VER, gamepadNumber)) >= (GamepadButtonConfig.LEFT_STICK_VER_MAX * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
                 return true;
 
-            if (Input.GetKey(KeyCode.S) && gamepadNumber == 1)
+            if (gamepadNumber == 1 && Input.GetKey(KeyCode.S))
                 return true;
 
             return false;
@@ -56,7 +56,7 @@ namespace Common.Utils
             if (Input.GetAxis(GamepadButtonConfig.SetGamepadNumber(GamepadButtonConfig.LEFT_STICK_HORI, gamepadNumber)) >= (GamepadButtonConfig.LEFT_STICK_HORI_MAX * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
                 return true;
 
-            if (Input.GetKey(KeyCode.D) && gamepadNumber == 1)
+            if (gamepadNumber == 1 && Input.GetKey(KeyCode.D))
                 return true;
 
             return false;
@@ -67,7 +67,7 @@ namespace Common.Utils
             if (Input.GetAxis(GamepadButtonConfig.SetGamepadNumber(GamepadButtonConfig.LEFT_STICK_HORI, gamepadNumber)) <= (GamepadButtonConfig.LEFT_STICK_HORI_MIN * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
                 return true;
 
-            if (Input.GetKey(KeyCode.A) && gamepadNumber == 1)
+            if (gamepadNumber == 1 && Input.GetKey(KeyCode.A))
                 return true;
 
             return false;
@@ -78,7 +78,7 @@ namespace Common.Utils
             if (Input.GetKeyDown(GamepadButtonConfig.SetGamepadNumber(GamepadButtonConfig.BUTTON_B, gamepadNumber)))
                 return true;
 
-            if (Input.GetKeyDown(KeyCode.Space) && gamepadNumber == 1)
+            if (gamepadNumber == 1 && Input.GetKeyDown(KeyCode.Space))
                 return true;
 
             return false;
@@ -93,7 +93,7 @@ namespace Common.Utils
             if (Input.GetAxis(GamepadButtonConfig.SetGamepadNumber(GamepadButtonConfig.RIGHT_STICK_HORI, gamepadNumber)) <= (GamepadButtonConfig.RIGHT_STICK_HORI_MIN * GamepadButtonConfig.FAST_VALUE_FOR_STICK))
                 return true;
 
-            if (Input.GetKey(KeyCode.L) && Input.GetKey(KeyCode.LeftShift) && gamepadNumber == 1)
+            if (gamepadNumber == 1 && Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.J))
                 return true;
 
             return false;
@@ -104,7 +104,7 @@ namespace Common.Utils
             if (Input.GetAxis(GamepadButtonConfig.SetGamepadNumber(GamepadButtonConfig.RIGHT_STICK_HORI, gamepadNumber)) >= (GamepadButtonConfig.RIGHT_STICK_HORI_MAX * GamepadButtonConfig.FAST_VALUE_FOR_STICK))
                 return true;
 
-            if (Input.GetKey(KeyCode.J) && Input.GetKey(KeyCode.LeftShift) && gamepadNumber == 1)
+            if (gamepadNumber == 1 && Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.L))
                 return true;
 
             return false;
@@ -115,7 +115,7 @@ namespace Common.Utils
             if (Input.GetAxis(GamepadButtonConfig.SetGamepadNumber(GamepadButtonConfig.RIGHT_STICK_HORI, gamepadNumber)) <= (GamepadButtonConfig.RIGHT_STICK_HORI_MIN * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
                 return true;
 
-            if (Input.GetKey(KeyCode.L) && gamepadNumber == 1)
+            if (gamepadNumber == 1 && Input.GetKey(KeyCode.J))
                 return true;
 
             return false;
@@ -126,7 +126,7 @@ namespace Common.Utils
             if (Input.GetAxis(GamepadButtonConfig.SetGamepadNumber(GamepadButtonConfig.RIGHT_STICK_HORI, gamepadNumber)) >= (GamepadButtonConfig.RIGHT_STICK_HORI_MAX * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
                 return true;
 
-            if (Input.GetKey(KeyCode.J) && gamepadNumber == 1)
+            if (gamepadNumber == 1 && Input.GetKey(KeyCode.L))
                 return true;
 
             return false;
@@ -137,7 +137,7 @@ namespace Common.Utils
             if (Input.GetKeyDown(GamepadButtonConfig.SetGamepadNumber(GamepadButtonConfig.BUTTON_R3, gamepadNumber)))
                 return true;
 
-            if (Input.GetKey(KeyCode.L) && Input.GetKey(KeyCode.J))
+            if (Input.GetKey(KeyCode.L) & Input.GetKey(KeyCode.J))
                 return true;
 
             return false;
@@ -148,7 +148,7 @@ namespace Common.Utils
             if (Input.GetAxis(GamepadButtonConfig.SetGamepadNumber(GamepadButtonConfig.RIGHT_STICK_VER, gamepadNumber)) >= (GamepadButtonConfig.RIGHT_STICK_VER_MAX * GamepadButtonConfig.FAST_VALUE_FOR_STICK))
                 return true;
 
-            if (Input.GetKey(KeyCode.I) && Input.GetKey(KeyCode.LeftShift) && gamepadNumber == 1)
+            if (gamepadNumber == 1 && Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.I))
                 return true;
 
             return false;
@@ -159,7 +159,7 @@ namespace Common.Utils
             if (Input.GetAxis(GamepadButtonConfig.SetGamepadNumber(GamepadButtonConfig.RIGHT_STICK_VER, gamepadNumber)) <= (GamepadButtonConfig.RIGHT_STICK_VER_MIN * GamepadButtonConfig.FAST_VALUE_FOR_STICK))
                 return true;
 
-            if (Input.GetKey(KeyCode.K) && Input.GetKey(KeyCode.LeftShift) && gamepadNumber == 1)
+            if (gamepadNumber == 1 && Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.K))
                 return true;
 
             return false;
@@ -170,7 +170,7 @@ namespace Common.Utils
             if (Input.GetAxis(GamepadButtonConfig.SetGamepadNumber(GamepadButtonConfig.RIGHT_STICK_VER, gamepadNumber)) >= (GamepadButtonConfig.RIGHT_STICK_VER_MAX * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
                 return true;
 
-            if (Input.GetKey(KeyCode.I) && gamepadNumber == 1)
+            if (gamepadNumber == 1 && Input.GetKey(KeyCode.I))
                 return true;
 
             return false;
@@ -181,7 +181,7 @@ namespace Common.Utils
             if (Input.GetAxis(GamepadButtonConfig.SetGamepadNumber(GamepadButtonConfig.RIGHT_STICK_VER, gamepadNumber)) <= (GamepadButtonConfig.RIGHT_STICK_VER_MIN * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
                 return true;
 
-            if (Input.GetKey(KeyCode.K) && gamepadNumber == 1)
+            if (gamepadNumber == 1 && Input.GetKey(KeyCode.K))
                 return true;
 
             return false;
