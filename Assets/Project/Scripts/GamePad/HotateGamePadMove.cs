@@ -26,12 +26,12 @@ public class HotateGamePadMove : MonoBehaviour
     float v;
     float h;
 
-    //ToDo: 左スティックの上下・左右を別のメソッド化します。
+    //上下・左右を別でメソッドで定義する。
     void Update()
     {
         PreventRotation();
 
-        //左スティックの上下で移動
+        //上下で移動
         if (HotateMovingUtils.isPressedDashDownMoving(gamepadNumber))
         {
             v = Time.deltaTime * GamepadHotateConfig.DASH_SPPED;
@@ -68,7 +68,7 @@ public class HotateGamePadMove : MonoBehaviour
         //ジャンプ
         Jump();
 
-        //左スティックの左右で方向転換
+        //左右で方向転換
         if (HotateMovingUtils.isPressedRightMoving(gamepadNumber))
         {
             h = Time.deltaTime * GamepadHotateConfig.ANGLE_CHAGE_SPPED;
