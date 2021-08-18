@@ -22,6 +22,11 @@ public class HotateGamePadMove : MonoBehaviour
     //rigidbodyオブジェクト格納用変数
     [SerializeField] Rigidbody rb;
 
+    //カメラの位置がデフォルトにないときに利用する変数
+    private static float cameraMinDeg = 0;
+    private static float cameraMaxDeg = 360;
+    private float cameraMidDeg = (cameraMinDeg + cameraMaxDeg) / 2f;
+
     //移動の係数格納用変数
     float v;
     float h;
@@ -29,8 +34,69 @@ public class HotateGamePadMove : MonoBehaviour
     //上下・左右を別でメソッドで定義する。
     void Update()
     {
+        //カメラがデフォルト位置にないときの挙動
         PreventRotation();
 
+        //ジャンプ
+        Jump();
+
+        //上下移動
+        VerticalMovement();
+
+        //水平移動
+        HorizontalMovement();
+
+    }
+
+    //地面に接触したときにはonGroundをtrue、injumpingをfalseにする
+    //ただし地面にGroundタグをつける必要がある
+    //OnCollisionEnterは物体同士がぶつかった時に呼ばれる
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "Ground" || col.gameObject.tag == "Player")
+        {
+            onGround = true;
+            isFirstJumping = false;
+            isSecondJumping = false;
+        }     
+    }
+
+    void OnCollisionExit(Collision col)
+    {
+        if (col.gameObject.tag == "Ground" || col.gameObject.tag == "Player")
+        {
+            onGround = false;
+            isFirstJumping = true;
+            isSecondJumping = false;
+        }
+    }
+
+    //カメラの位置がデフォルトにない際に、移動キーで直感的にカメラの位置を戻すメソッド
+    private void ResetCameraHorizontalPosition()
+    {
+        float horizontalAngle = horizontalRotNode.transform.localEulerAngles.y;
+        float h = 0;
+        if (cameraMinDeg + 1 < horizontalAngle && horizontalAngle < cameraMidDeg)
+        {
+            horizontalRotNode.transform.localRotation = Quaternion.Euler(new Vector3(0, horizontalAngle - GamepadCameraConfig.VERTICAL_CAMERA_SPEED, 0));
+            h = Time.deltaTime * GamepadHotateConfig.ANGLE_CHAGE_SPPED;
+        }
+
+        else if (cameraMidDeg <= horizontalAngle && horizontalAngle < cameraMaxDeg - 1)
+        {
+            horizontalRotNode.transform.localRotation = Quaternion.Euler(new Vector3(0, horizontalAngle + GamepadCameraConfig.VERTICAL_CAMERA_SPEED, 0));
+            h = -Time.deltaTime * GamepadHotateConfig.ANGLE_CHAGE_SPPED;
+        }
+        else {
+            horizontalRotNode.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        }
+
+        transform.Rotate(Vector3.up * h);
+
+    }
+
+    private void VerticalMovement()
+    {
         //上下で移動
         if (HotateMovingUtils.isPressedDashDownMoving(gamepadNumber))
         {
@@ -64,11 +130,10 @@ public class HotateGamePadMove : MonoBehaviour
 
         //移動の実行
         transform.position += transform.forward * v;
+    }
 
-        //ジャンプ
-        Jump();
-
-        //左右で方向転換
+    private void HorizontalMovement()
+    {
         if (HotateMovingUtils.isPressedRightMoving(gamepadNumber))
         {
             h = Time.deltaTime * GamepadHotateConfig.ANGLE_CHAGE_SPPED;
@@ -83,57 +148,7 @@ public class HotateGamePadMove : MonoBehaviour
             h = 0;
 
         //方向転換動作の実行
-        transform.Rotate(Vector3.up * h);　//Vector3.upとは( 0, 1, 0)のこと。　つまりy軸を中心にhだけ回転させてる。
-    }
-
-    //地面に接触したときにはonGroundをtrue、injumpingをfalseにする
-    //ただし地面にGroundタグをつける必要がある
-    //OnCollisionEnterは物体同士がぶつかった時に呼ばれる
-    void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.tag == "Ground" || col.gameObject.tag == "Player")
-        {
-            onGround = true;
-            isFirstJumping = false;
-            isSecondJumping = false;
-        }     
-    }
-
-    void OnCollisionExit(Collision col)
-    {
-        if (col.gameObject.tag == "Ground" || col.gameObject.tag == "Player")
-        {
-            onGround = false;
-            isFirstJumping = true;
-            isSecondJumping = false;
-        }
-    }
-
-    //カメラの位置がデフォルトにない際に、移動キーで直感的にカメラの位置を戻すメソッド
-    private static float cameraMinDeg = 0;
-    private static float cameraMaxDeg = 360;
-    private float cameraMidDeg = (cameraMinDeg + cameraMaxDeg) / 2f;
-    private void ResetCameraHorizontalPosition()
-    {
-        float horizontalAngle = horizontalRotNode.transform.localEulerAngles.y;
-        float h = 0;
-        if (cameraMinDeg + 1 < horizontalAngle && horizontalAngle < cameraMidDeg)
-        {
-            horizontalRotNode.transform.localRotation = Quaternion.Euler(new Vector3(0, horizontalAngle - GamepadCameraConfig.VERTICAL_CAMERA_SPEED, 0));
-            h = Time.deltaTime * GamepadHotateConfig.ANGLE_CHAGE_SPPED;
-        }
-
-        else if (cameraMidDeg <= horizontalAngle && horizontalAngle < cameraMaxDeg - 1)
-        {
-            horizontalRotNode.transform.localRotation = Quaternion.Euler(new Vector3(0, horizontalAngle + GamepadCameraConfig.VERTICAL_CAMERA_SPEED, 0));
-            h = -Time.deltaTime * GamepadHotateConfig.ANGLE_CHAGE_SPPED;
-        }
-        else {
-            horizontalRotNode.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
-        }
-
         transform.Rotate(Vector3.up * h);
-
     }
 
     void Jump()
