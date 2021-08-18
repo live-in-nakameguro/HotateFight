@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace GameScenes.SettingAndResultBattle
 { 
@@ -55,6 +56,33 @@ namespace GameScenes.SettingAndResultBattle
                 {"DesertStage", true},
                 //{"DarkStage", true},
                 //{"CityStage", true}
+            };
+    }
+
+    public class ItemSetting
+    {
+        public enum Items
+        {
+            None,
+            Bomb,           // 爆弾
+            LandMines,      // 地雷
+        }
+
+        // falseの時、ステージにアイテムを表示しない
+        public static bool UseItem = true;
+
+        public static Dictionary<Items, bool> RandomItemSettingDic = new Dictionary<Items, bool>()
+            {
+                { Items.None, false},
+                { Items.Bomb, true},
+                { Items.LandMines, true},
+            };
+
+        public static Dictionary<Items, Sprite> ItemTextureDict = new Dictionary<Items, Sprite>()
+            {
+                { Items.None, null},
+                { Items.Bomb, Resources.Load<Sprite>("Items/Bomb")},
+                { Items.LandMines, null},
             };
     }
 
