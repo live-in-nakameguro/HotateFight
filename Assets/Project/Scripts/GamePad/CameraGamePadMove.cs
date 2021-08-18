@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using Gamepad.Config;
+using Common.Utils;
 
 public class CameraGamePadMove: MonoBehaviour
 {
@@ -23,22 +24,22 @@ public class CameraGamePadMove: MonoBehaviour
     private void HorizontalMotion()
     {
         float horizontalAngle = horizontalRotNode.localRotation.eulerAngles.y;
-
-        if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.RIGHT_STICK_HORI)) >= (GamepadButtonConfig.RIGHT_STICK_HORI_MAX * GamepadButtonConfig.FAST_VALUE_FOR_STICK))
-            horizontalRotNode.localRotation = Quaternion.Euler(new Vector3(0, horizontalAngle + GamepadCameraConfig.HORIZONTAL_CAMERA_SPEED, 0));
-
-        else if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.RIGHT_STICK_HORI)) <= (GamepadButtonConfig.RIGHT_STICK_HORI_MIN * GamepadButtonConfig.FAST_VALUE_FOR_STICK))
-            horizontalRotNode.localRotation = Quaternion.Euler(new Vector3(0, horizontalAngle - GamepadCameraConfig.HORIZONTAL_CAMERA_SPEED, 0));
-
-        else if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.RIGHT_STICK_HORI)) >= (GamepadButtonConfig.RIGHT_STICK_HORI_MAX * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
-            horizontalRotNode.localRotation = Quaternion.Euler(new Vector3(0, horizontalAngle + GamepadCameraConfig.HORIZONTAL_CAMERA_LOW_SPEED, 0));
-
-        else if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.RIGHT_STICK_HORI)) <= (GamepadButtonConfig.RIGHT_STICK_HORI_MIN * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
-            horizontalRotNode.localRotation = Quaternion.Euler(new Vector3(0, horizontalAngle - GamepadCameraConfig.HORIZONTAL_CAMERA_LOW_SPEED, 0));
-        
-        else if (Input.GetKeyDown(SetGamepadNumber(GamepadButtonConfig.BUTTON_R3)))
+        if (HotateCameraUtils.isPressedCameraReset(gamepadNumber))
             //カメラリセット
             horizontalRotNode.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
+
+        else if (HotateCameraUtils.isPressedCameraLeftSpeedy(gamepadNumber))
+            horizontalRotNode.localRotation = Quaternion.Euler(new Vector3(0, horizontalAngle + GamepadCameraConfig.HORIZONTAL_CAMERA_SPEED, 0));
+
+        else if (HotateCameraUtils.isPressedCameraRightSpeedy(gamepadNumber))
+            horizontalRotNode.localRotation = Quaternion.Euler(new Vector3(0, horizontalAngle - GamepadCameraConfig.HORIZONTAL_CAMERA_SPEED, 0));
+
+        else if (HotateCameraUtils.isPressedCameraLeft(gamepadNumber))
+            horizontalRotNode.localRotation = Quaternion.Euler(new Vector3(0, horizontalAngle + GamepadCameraConfig.HORIZONTAL_CAMERA_LOW_SPEED, 0));
+
+        else if (HotateCameraUtils.isPressedCameraRight(gamepadNumber))
+            horizontalRotNode.localRotation = Quaternion.Euler(new Vector3(0, horizontalAngle - GamepadCameraConfig.HORIZONTAL_CAMERA_LOW_SPEED, 0));
+    
     }
 
     //上下の回転
@@ -66,27 +67,17 @@ public class CameraGamePadMove: MonoBehaviour
             }
         }
 
-        if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.RIGHT_STICK_VER)) >= (GamepadButtonConfig.RIGHT_STICK_VER_MAX * GamepadButtonConfig.FAST_VALUE_FOR_STICK))
+        if (HotateCameraUtils.isPressedCameraUpSpeedy(gamepadNumber))
             UpOrDown(GamepadCameraConfig.VERTICAL_CAMERA_SPEED, true);
 
-        else if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.RIGHT_STICK_VER)) <= (GamepadButtonConfig.RIGHT_STICK_VER_MIN * GamepadButtonConfig.FAST_VALUE_FOR_STICK))
+        else if (HotateCameraUtils.isPressedCameraDownSpeedy(gamepadNumber))
             UpOrDown(GamepadCameraConfig.VERTICAL_CAMERA_SPEED, false);
 
-        else if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.RIGHT_STICK_VER)) >= (GamepadButtonConfig.RIGHT_STICK_VER_MAX * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
+        else if (HotateCameraUtils.isPressedCameraUp(gamepadNumber))
             UpOrDown(GamepadCameraConfig.VERTICAL_CAMERA_LOW_SPEED, true);
 
-        else if (Input.GetAxis(SetGamepadNumber(GamepadButtonConfig.RIGHT_STICK_VER)) <= (GamepadButtonConfig.RIGHT_STICK_VER_MIN * GamepadButtonConfig.SLOW_VALUE_FOR_STICK))
+        else if (HotateCameraUtils.isPressedCameraDown(gamepadNumber))
             UpOrDown(GamepadCameraConfig.VERTICAL_CAMERA_SPEED, false);
-    }
-
-    string SetGamepadNumber(string gamepadKey)
-    {
-        string gamepadNumberStr = "";
-        if (gamepadNumber != 0)
-        {
-            gamepadNumberStr = $" {gamepadNumber}";
-        }
-        return string.Format(gamepadKey, gamepadNumberStr);
     }
 
     /*ズームの設定

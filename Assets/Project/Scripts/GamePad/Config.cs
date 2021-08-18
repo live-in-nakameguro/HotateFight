@@ -62,12 +62,22 @@ namespace Gamepad.Config {
         public const string BUTTON_PULS = "joystick{0} button 9";
         public const string BUTTON_PHOTO = "joystick{0} button 13";
         public const string BUTTON_HOME = "joystick{0} button 12";
+
+        public static string SetGamepadNumber(string gamepadKey, int gamepadNumber)
+        {
+            string gamepadNumberStr = "";
+            if (gamepadNumber != 0)
+            {
+                gamepadNumberStr = $" {gamepadNumber}";
+            }
+            return string.Format(gamepadKey, gamepadNumberStr);
+        }
     }
 
     public static class GamepadCameraConfig
     {
         //水平方向のカメラスピード
-        public const float HORIZONTAL_CAMERA_SPEED = 3.0f;
+        public const float HORIZONTAL_CAMERA_SPEED = 2.0f;
         public const float HORIZONTAL_CAMERA_LOW_SPEED = HORIZONTAL_CAMERA_SPEED / 2.0f;
 
         //垂直方向のカメラスピード
