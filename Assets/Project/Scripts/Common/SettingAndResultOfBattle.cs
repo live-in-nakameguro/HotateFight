@@ -6,7 +6,7 @@ namespace GameScenes.SettingAndResultBattle
 { 
     public class BattleSetting
     {
-        private static int numberOfPlayers = 3;
+        private static int numberOfPlayers = 2;
         private static int numberOfWins = 3;
         private static float hotateHP = 300.0f;
         private static bool isRondom = true; // Rondom or Select
@@ -75,13 +75,20 @@ namespace GameScenes.SettingAndResultBattle
             {
                 { Items.None, false},
                 { Items.Bomb, true},
-                { Items.LandMines, true},
+                { Items.LandMines, false},
             };
 
         public static Dictionary<Items, Sprite> ItemTextureDict = new Dictionary<Items, Sprite>()
             {
                 { Items.None, null},
-                { Items.Bomb, Resources.Load<Sprite>("Items/Bomb")},
+                { Items.Bomb, Resources.Load<Sprite>("Items/Textures/Bomb")},
+                { Items.LandMines, null},
+            };
+
+        public static Dictionary<Items, GameObject> ItemPrefabDict = new Dictionary<Items, GameObject>()
+            {
+                { Items.None, null},
+                { Items.Bomb, Resources.Load<GameObject>("Items/Prefabs/Bomb")},
                 { Items.LandMines, null},
             };
     }
