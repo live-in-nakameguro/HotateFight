@@ -16,6 +16,12 @@ namespace Item
         // アイテム画像表示
         [SerializeField] Image image;
 
+        // ホタテ
+        [SerializeField] GameObject hotate;
+
+        // アイテム発射点（弾丸発射個所と同じ座標）
+        [SerializeField] Transform muzzle;
+
         public static Dictionary<int, ItemSetting.Items> playerItemDict;
 
         static PlayerItem()
@@ -61,7 +67,6 @@ namespace Item
                 if (Input.GetKeyDown(SetGamepadNumber(GamepadButtonConfig.BUTTON_Y)))
                 {
                     ExecuteItem(playerItemDict[gamepadNumber]);
-                    playerItemDict[gamepadNumber] = ItemSetting.Items.None;
                 }
             }
         }
@@ -69,17 +74,21 @@ namespace Item
         void ExecuteItem(ItemSetting.Items item)
         {
             Debug.Log("アイテム使用：" + item);
+            var itemsSound = GameObject.Find("ItemsSound").GetComponent<AudioSource>();
+            itemsSound.PlayOneShot(ItemSetting.ItemAudioClipDict[item]);
             switch (item) 
             {
                 case ItemSetting.Items.None:
                     break;
                 case ItemSetting.Items.Bomb:
+                    ShootingBomb.Shooting(hotate, ItemSetting.ItemPrefabDict[ItemSetting.Items.Bomb], muzzle);
                     break;
                 case ItemSetting.Items.LandMines:
                     break;
                 default:
                     break;
             }
+            playerItemDict[gamepadNumber] = ItemSetting.Items.None;
         }
 
         string SetGamepadNumber(string gamepadKey)
