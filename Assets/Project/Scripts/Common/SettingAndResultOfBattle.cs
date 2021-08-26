@@ -91,6 +91,13 @@ namespace GameScenes.SettingAndResultBattle
                 { Items.Bomb, Resources.Load<GameObject>("Items/Prefabs/Bomb")},
                 { Items.LandMines, null},
             };
+
+        public static Dictionary<Items, AudioClip> ItemAudioClipDict = new Dictionary<Items, AudioClip>()
+            {
+                { Items.None, null},
+                { Items.Bomb, Resources.Load<AudioClip>("Items/AudioClip/kazuki_freekick")},
+                { Items.LandMines, null},
+            };
     }
 
     /* åªç›ÇÕéQè∆ÇµÇƒÇ¢Ç»Ç¢ÅB

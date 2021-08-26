@@ -74,6 +74,8 @@ namespace Item
         void ExecuteItem(ItemSetting.Items item)
         {
             Debug.Log("アイテム使用：" + item);
+            var itemsSound = GameObject.Find("ItemsSound").GetComponent<AudioSource>();
+            itemsSound.PlayOneShot(ItemSetting.ItemAudioClipDict[item]);
             switch (item) 
             {
                 case ItemSetting.Items.None:
