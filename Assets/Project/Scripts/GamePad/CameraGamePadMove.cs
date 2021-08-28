@@ -2,8 +2,9 @@ using UnityEngine;
 using System;
 using Gamepad.Config;
 using Common.Utils;
+using Photon.Pun;
 
-public class CameraGamePadMove: MonoBehaviour
+public class CameraGamePadMove: MonoBehaviourPunCallbacks
 {
     //GamepadNumberの指定(0を選択した場合、すべてのゲームパッドで操作可能になる。)
     [SerializeField] int gamepadNumber = 0;
@@ -14,6 +15,10 @@ public class CameraGamePadMove: MonoBehaviour
 
     void Update()
     {
+        //自分の操作が他のユーザの操作に影響を与えないようにする
+        if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
+            return;
+
         HorizontalMotion();
         VerticalMotion();
         //ズーム用の関数:コメントアウト理由はメソッド定義を参照

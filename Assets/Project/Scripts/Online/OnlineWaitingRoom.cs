@@ -4,7 +4,6 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-// ネットワーク接続スクリプト
 public class OnlineWaitingRoom : MonoBehaviourPunCallbacks
 {
     public GameObject PhotonObject;

@@ -11,7 +11,7 @@ namespace OnlineBase
     public class OnlineLobby : MonoBehaviourPunCallbacks
     {
         // ルーム一覧
-        public List<RoomInfo> roomViewList = new List<RoomInfo>();
+        public static List<RoomInfo> roomViewList = new List<RoomInfo>();
 
         // 部屋の最大人数
         private static byte RoomMaxNumber = 4;
@@ -26,7 +26,7 @@ namespace OnlineBase
         }
 
         /* Photonサーバ切断処理
-         * Bボタンを押した時に、タイトル画面に戻る時に呼び出す
+         * ToDO: Bボタンを押した時に、タイトル画面に戻る時に呼び出す
          */
         public void DisConnectPhoton()
         {
@@ -63,11 +63,13 @@ namespace OnlineBase
 
         // ルーム新規作成処理
         // ルームを作った人はホストになるので、自動でルームに参加することになる。
-        public void CreateRoom(string roomName)
+        public void CreateRoom()
         {
             RoomOptions roomOptions = new RoomOptions();
             // 部屋の最大人数
             roomOptions.MaxPlayers = RoomMaxNumber;
+
+            string roomName = $"ROOM {roomViewList.Count + 1f}";
             PhotonNetwork.CreateRoom(roomName, roomOptions);
         }
 
@@ -104,9 +106,6 @@ namespace OnlineBase
             PhotonNetwork.IsMessageQueueRunning = false;
             SceneManager.LoadSceneAsync("OnlineWaitingScene", LoadSceneMode.Single);
 
-            //自分自身をカウントしようと頑張った、力技
-            //roomViewList.Add(PhotonNetwork.CurrentRoom);
-            //UpdateRoomList(true);
         }
 
         //【コールバック】
@@ -139,29 +138,22 @@ namespace OnlineBase
         {
             if (PhotonNetwork.InRoom)
             {
-                // 退室
                 PhotonNetwork.LeaveRoom();
             }
         }
 
         public void UpdateRoomList(bool isRoomIn=false)
         {
-            //子要素を削除
             foreach (Transform child in viewPortContent.transform)
             {
                 Destroy(child.gameObject);
             }
 
-            //新たなボタンを作成 色々とバグがあるけど直せてない。。。。
             foreach (RoomInfo roomInfo in roomViewList)
             {
                 var parent = viewPortContent.transform;
                 GameObject joinButtton = Instantiate(joinRommButtonPrefab, parent);
                 joinButtton.transform.Find("JoinRoomButton").transform.Find("RoomName").GetComponent<Text>().text = roomInfo.Name;
-                //if(!isRoomIn && roomInfo.Name == PhotonNetwork.CurrentRoom.Name)
-                //    joinButtton.transform.Find("PlayerNumber").GetComponent<Text>().text = $"{roomInfo.PlayerCount+1}/{roomInfo.MaxPlayers}";
-                //else
-                //    joinButtton.transform.Find("PlayerNumber").GetComponent<Text>().text = $"{roomInfo.PlayerCount}/{roomInfo.MaxPlayers}";
                 joinButtton.transform.Find("PlayerNumber").GetComponent<Text>().text = $"{roomInfo.PlayerCount}/{RoomMaxNumber}";
             }
 

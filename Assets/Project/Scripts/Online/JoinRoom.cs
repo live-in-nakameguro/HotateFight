@@ -10,7 +10,6 @@ public class JoinRoom : MonoBehaviour
 
     public void JoinRoomButton()
     {
-        Debug.Log($"ƒ{ƒ^ƒ“‚©‚ç“üŽº‚µ‚Ä‚Ý‚é: room name: {RoomName.GetComponent<Text>().text}");
         OnlineLobby.ConnectToRoom(RoomName.GetComponent<Text>().text);
     }
 

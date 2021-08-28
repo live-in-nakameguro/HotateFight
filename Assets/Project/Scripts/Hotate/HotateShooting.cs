@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Common.Utils;
+using Photon.Pun;
 
 namespace Hotate.Shooting
 {
-    public class HotateShooting : MonoBehaviour
+    public class HotateShooting : MonoBehaviourPunCallbacks
     {
         // SE
         [SerializeField] AudioClip shootingVoice;
@@ -48,6 +49,10 @@ namespace Hotate.Shooting
         // Update is called once per frame
         void Update()
         {
+            //©•ª‚Ì‘€ì‚ª‘¼‚Ìƒ†[ƒU‚Ì‘€ì‚É‰e‹¿‚ğ—^‚¦‚È‚¢‚æ‚¤‚É‚·‚é
+            if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
+                return;
+
             Shooting();
         }
 
