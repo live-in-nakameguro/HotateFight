@@ -50,7 +50,7 @@ namespace Hotate.Shooting
         void Update()
         {
             //©•ª‚Ì‘€ì‚ª‘¼‚Ìƒ†[ƒU‚Ì‘€ì‚É‰e‹¿‚ğ—^‚¦‚È‚¢‚æ‚¤‚É‚·‚é
-            if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
+            if (PhotonNetwork.IsConnected == true && photonView.IsMine == false)
                 return;
 
             Shooting();

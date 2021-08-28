@@ -36,7 +36,7 @@ public class HotateGamePadMove : MonoBehaviourPunCallbacks
     void Update()
     {
         //自分の操作が他のユーザの操作に影響を与えないようにする
-        if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
+        if (PhotonNetwork.IsConnected == true && photonView.IsMine == false)
             return;
 
         //カメラがデフォルト位置にないときの挙動

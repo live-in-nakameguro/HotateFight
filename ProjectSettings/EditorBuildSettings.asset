@@ -14,37 +14,37 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Project/Scenes/TitleScene.unity
     guid: d463c9f53230e764a8c1e3de382c12f3
-  - enabled: 0
+  - enabled: 1
     path: Assets/Project/Scenes/MenuScene.unity
     guid: dd967ed91fa9e104a92a95a6b7b15b70
-  - enabled: 0
+  - enabled: 1
     path: Assets/Project/Scenes/Online/OnlineLobbyScene.unity
     guid: 83c9b593ee5828c43813f28594d72ae2
-  - enabled: 0
+  - enabled: 1
     path: Assets/Project/Scenes/Online/OnlineWaitingScene.unity
     guid: d758f5979ae381049a114145143a64d0
-  - enabled: 0
+  - enabled: 1
     path: Assets/Project/Scenes/PlayerNumSelectScene.unity
     guid: 1085e73cf3530d74d8f06d5b07e58094
-  - enabled: 0
+  - enabled: 1
     path: Assets/Project/Scenes/CharacterSelectScene.unity
     guid: be853b237f9fd714da9d863b459dfc5e
-  - enabled: 0
+  - enabled: 1
     path: Assets/Project/Scenes/GameStartRuleScene/GameStartRuleScene.unity
     guid: dcc1611f8b68f1740aa63f2a33264f65
-  - enabled: 0
+  - enabled: 1
     path: Assets/Project/Scenes/GameStartRuleScene/StageRandomSwitchScene.unity
     guid: 99714a921cba5204b87645f768247e5d
-  - enabled: 0
+  - enabled: 1
     path: Assets/Project/Scenes/GameStartRuleScene/StageSelectScene.unity
     guid: 4958fbd2e03b34f4396850eb66b74119
-  - enabled: 0
+  - enabled: 1
     path: Assets/Project/Scenes/StageScenes/DesertStageScene.unity
     guid: 5d0a9caa94e3f924888350d1f9358558
-  - enabled: 0
+  - enabled: 1
     path: Assets/Project/Scenes/StageScenes/UniverseStageScene.unity
     guid: c9fb4b07a4bc9d945930d4207a6f49e7
-  - enabled: 0
+  - enabled: 1
     path: Assets/Project/Scenes/ScoreBourdScene.unity
     guid: 900ef3942a1fbe64b83e07b7f8647824
   m_configObjects: {}
