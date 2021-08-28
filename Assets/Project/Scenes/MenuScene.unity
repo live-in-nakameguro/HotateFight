@@ -698,7 +698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyDownCommand: s
-  sceneName: TestScenes
+  sceneName: OnlineLobbyScene
 --- !u!114 &876417494
 MonoBehaviour:
   m_ObjectHideFlags: 0
