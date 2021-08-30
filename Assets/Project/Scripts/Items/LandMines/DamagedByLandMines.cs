@@ -20,7 +20,7 @@ namespace Hotate.Damage.Items
 
         public override void HotateMotion(Rigidbody rb, Transform transform)  //override‚ð•t—^
         {
-            rb.AddForce(transform.up * 1500);
+            rb.AddForce(transform.up * 1000);
         }
     }
 }
