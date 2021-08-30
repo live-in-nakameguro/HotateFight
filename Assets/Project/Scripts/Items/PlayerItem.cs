@@ -84,6 +84,7 @@ namespace Item
                     ShootingBomb.Shooting(hotate, ItemSetting.ItemPrefabDict[ItemSetting.Items.Bomb], muzzle);
                     break;
                 case ItemSetting.Items.LandMines:
+                    PlaceMines.Place(hotate, ItemSetting.ItemPrefabDict[ItemSetting.Items.LandMines], muzzle);
                     break;
                 default:
                     break;

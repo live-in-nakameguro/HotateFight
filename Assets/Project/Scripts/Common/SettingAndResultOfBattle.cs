@@ -75,21 +75,21 @@ namespace GameScenes.SettingAndResultBattle
             {
                 { Items.None, false},
                 { Items.Bomb, true},
-                { Items.LandMines, false},
+                { Items.LandMines, true},
             };
 
         public static Dictionary<Items, Sprite> ItemTextureDict = new Dictionary<Items, Sprite>()
             {
                 { Items.None, null},
                 { Items.Bomb, Resources.Load<Sprite>("Items/Textures/Bomb")},
-                { Items.LandMines, null},
+                { Items.LandMines, Resources.Load<Sprite>("Items/Textures/LandMines")},
             };
 
         public static Dictionary<Items, GameObject> ItemPrefabDict = new Dictionary<Items, GameObject>()
             {
                 { Items.None, null},
                 { Items.Bomb, Resources.Load<GameObject>("Items/Prefabs/Bomb")},
-                { Items.LandMines, null},
+                { Items.LandMines, Resources.Load<GameObject>("Items/Prefabs/LandMines")},
             };
 
         public static Dictionary<Items, AudioClip> ItemAudioClipDict = new Dictionary<Items, AudioClip>()
