@@ -20,6 +20,8 @@ namespace Item
 
         [SerializeField] bool isSpin = false;
         [SerializeField] float spin_YSpeed = 1;
+
+        [SerializeField] bool useGroundStop = true;
         private bool isGround = false;
 
         // Start is called before the first frame update
@@ -46,7 +48,10 @@ namespace Item
 
         void OnTriggerStay(Collider other)
         {
-            IsEnterGround(other);
+            if (useGroundStop)
+            {
+                IsEnterGround(other);
+            }
         }
 
         private void IsEnterGround(Collider other)

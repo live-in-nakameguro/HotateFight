@@ -1537,6 +1537,10 @@ PrefabInstance:
       propertyPath: move_YSpeed
       value: 0.001
       objectReference: {fileID: 0}
+    - target: {fileID: 6512044141689359206, guid: 2468c1a8e24265b47975fd7335e01e21, type: 3}
+      propertyPath: useGroundStop
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2468c1a8e24265b47975fd7335e01e21, type: 3}
 --- !u!1001 &2844474542633081983

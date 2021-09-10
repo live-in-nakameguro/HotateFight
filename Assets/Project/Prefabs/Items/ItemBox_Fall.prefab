@@ -128,3 +128,4 @@ MonoBehaviour:
   move_ZSpeed: 1
   isSpin: 1
   spin_YSpeed: 1
+  useGroundStop: 1
