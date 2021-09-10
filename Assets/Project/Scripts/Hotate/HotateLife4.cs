@@ -46,7 +46,15 @@ namespace Hotate.Life
         // ダメージ床を実装しないならば、OnCollisionEnterを使用する。
         void OnCollisionEnter(Collision col)
         {
-            DamageTriger(col);
+            CollisionDamageTriger(col);
+        }
+
+        // IsTriggerにチェックが入っているColliderに接触した（すり抜けた）際に呼ばれる関数
+        // IsTriggerにチェックを入れると、すり抜ける当たり判定を実装できる。
+        // 実装理由：アイテムの爆発などで、ふっとばしが安定しない不具合の対応
+        void OnTriggerEnter(Collider other)
+        {
+            ColliderDamageTriger(other);
         }
 
         /// <summary>
@@ -90,7 +98,7 @@ namespace Hotate.Life
         /// ホタテにダメージを与えるかを判断する
         /// </summary>
         /// <param name="col">ホタテに接触したCollision</param>
-        void DamageTriger(Collision col)
+        void CollisionDamageTriger(Collision col)
         {
             // 無敵の場合、ダメージを受けない
             if (isInnvincible)
@@ -101,7 +109,7 @@ namespace Hotate.Life
             // オブジェクトタグが「DamageSource」の場合、ダメージを受ける。
             if (col.gameObject.tag == "DamageSource")
             {
-                CauseDamage(col);
+                CollisionCauseDamage(col);
             }
         }
 
@@ -109,10 +117,45 @@ namespace Hotate.Life
         /// ホタテにダメージを与える
         /// </summary>
         /// <param name="col">ホタテに接触したCollision</param>
-        void CauseDamage(Collision col)
+        void CollisionCauseDamage(Collision col)
         {
             // 接触したオブジェクトの持つコンポーネント（ここではスクリプト内のDamageクラス）を参照する。
             var damage = col.gameObject.GetComponent<Damage.Damage>();
+            CauseDamage(damage);
+        }
+
+        /// <summary>
+        /// ホタテにダメージを与えるかを判断する
+        /// </summary>
+        /// <param name="col">ホタテに接触したCollision</param>
+        void ColliderDamageTriger(Collider other)
+        {
+            // 無敵の場合、ダメージを受けない
+            if (isInnvincible)
+            {
+                return;
+            }
+
+            // オブジェクトタグが「DamageSource」の場合、ダメージを受ける。
+            if (other.gameObject.tag == "DamageSource")
+            {
+                ColliderCauseDamage(other);
+            }
+        }
+
+        /// <summary>
+        /// ホタテにダメージを与える
+        /// </summary>
+        /// <param name="col">ホタテに接触したCollision</param>
+        void ColliderCauseDamage(Collider other)
+        {
+            // 接触したオブジェクトの持つコンポーネント（ここではスクリプト内のDamageクラス）を参照する。
+            var damage = other.gameObject.GetComponent<Damage.Damage>();
+            CauseDamage(damage);
+        }
+
+        void CauseDamage(Damage.Damage damage)
+        {
             invincibleTime = damage.invincibleTime;
 
             StartInvincible();

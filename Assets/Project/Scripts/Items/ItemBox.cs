@@ -18,16 +18,23 @@ namespace Item
 
         }
 
-        void OnCollisionEnter(Collision col)
+        // ItemBoxをすり抜けるようにするために、ItemBoxのIsTriggerにチェックを付与
+        // 重ねっているItemBoxを取得するために、OnTriggerStayを使用
+        void OnTriggerStay(Collider other)
         {
-            HitPlayer(col);
+            HitPlayer(other);
         }
 
-        void HitPlayer(Collision col)
+        void HitPlayer(Collider other)
         {
-            if (col.gameObject.tag == "Player")
+            if (other.gameObject.tag == "Player")
             {
-                int gamepadNumber = GetGamepadNumber(col);
+                int gamepadNumber = GetGamepadNumber(other);
+                // アイテムを持っている状態で、アイテムを取得できないようにするための対応
+                if (PlayerItem.playerItemDict[gamepadNumber] != ItemSetting.Items.None)
+                {
+                    return;
+                }
                 PlayerItem.playerItemDict[gamepadNumber] = RondomItem();
                 Destroy(itemBox);
             }
@@ -36,26 +43,26 @@ namespace Item
         // 接触したプレイヤーが何Pかを判断する実装。
         // 今までの実装が悪いため、このように対応。
         // GetComponentは重い処理のため、場合によっては今までの実装を改変する。
-        int GetGamepadNumber(Collision col)
+        int GetGamepadNumber(Collider other)
         {
             HotateLife1 hotateLife1;
             HotateLife2 hotateLife2;
             HotateLife3 hotateLife3;
             HotateLife4 hotateLife4;
 
-            if (col.gameObject.TryGetComponent(out hotateLife1))
+            if (other.gameObject.TryGetComponent(out hotateLife1))
             {
                 return 1;
             }
-            if (col.gameObject.TryGetComponent(out hotateLife2))
+            if (other.gameObject.TryGetComponent(out hotateLife2))
             {
                 return 2;
             }
-            if (col.gameObject.TryGetComponent(out hotateLife3))
+            if (other.gameObject.TryGetComponent(out hotateLife3))
             {
                 return 3;
             }
-            if (col.gameObject.TryGetComponent(out hotateLife4))
+            if (other.gameObject.TryGetComponent(out hotateLife4))
             {
                 return 4;
             }
