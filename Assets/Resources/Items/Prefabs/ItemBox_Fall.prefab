@@ -124,7 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveType: 1
   move_XSpeed: 1
-  move_YSpeed: 0.001
+  move_YSpeed: 0.01
   move_ZSpeed: 1
   isSpin: 1
   spin_YSpeed: 1
