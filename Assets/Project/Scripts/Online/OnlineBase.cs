@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
@@ -116,8 +117,13 @@ namespace OnlineBase
             PhotonNetwork.CreateRoom(null, roomOptions);
         }
 
-        public void CreatPrivateRoom(string RoomName)
+        public void CreatPrivateRoom(Text RoomNameText)
         {
+            string RoomName = RoomNameText.text.ToString();
+
+            if (!IsInvalidRoomName(RoomName))
+                return;
+
             var roomOptions = new RoomOptions();
             roomOptions.MaxPlayers = RoomMaxNumber;
             roomOptions.IsVisible = false;
@@ -125,9 +131,25 @@ namespace OnlineBase
             PhotonNetwork.CreateRoom(RoomName, roomOptions);
         }
 
-        public void JoinPrivateRoom(string RoomName = null)
+        public void JoinPrivateRoom(Text RoomNameText)
         {
+            string RoomName = RoomNameText.text.ToString();
+
+            if (!IsInvalidRoomName(RoomName))
+                return;
+
             PhotonNetwork.JoinRoom(RoomName);
+        }
+
+        private bool IsInvalidRoomName(string RoomName)
+        {
+            if(!Regex.IsMatch(RoomName, "[0-9]{5,6}")) {
+                // ToDo: 有効なルーム名じゃない旨のポップアップ表示
+                Debug.Log($"有効なRoomNameじゃない!!{RoomName}");
+
+                return false;
+            }
+            return true;
         }
 
         public void JoinRondomRoom()
