@@ -19,8 +19,23 @@ EditorBuildSettings:
     guid: dd967ed91fa9e104a92a95a6b7b15b70
   - enabled: 1
     path: Assets/Project/Scenes/Online/OnlineLobbyScene.unity
-    guid: 83c9b593ee5828c43813f28594d72ae2
+    guid: 5efe3ed4e011d9d469541c94fe4dbe0e
   - enabled: 1
+    path: Assets/Project/Scenes/Online/PrivateRoomSelectScene.unity
+    guid: 5d399cb1ae0876b428a31b6f2d4c6d90
+  - enabled: 1
+    path: Assets/Project/Scenes/Online/RondomRoomSelectScene.unity
+    guid: c88ccc448aa749940b89184ca4ec0e9b
+  - enabled: 1
+    path: Assets/Project/Scenes/Online/OnlineGameStartRuleScene.unity
+    guid: 2a626c89c32677d49a6797fccb15231f
+  - enabled: 1
+    path: Assets/Project/Scenes/Online/WaitingRoomScene.unity
+    guid: e52c20d402ec42740b93e86a3d471afd
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: Assets/Project/Scenes/Online/OnlineWaitingScene.unity
     guid: d758f5979ae381049a114145143a64d0
   - enabled: 1
