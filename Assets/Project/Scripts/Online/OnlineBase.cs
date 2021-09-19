@@ -6,6 +6,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Common.PopUp;
 
 namespace OnlineBase
 {
@@ -14,7 +15,9 @@ namespace OnlineBase
         // 部屋の最大人数
         private static byte RoomMaxNumber = 4;
 
-        
+        [SerializeField] GameObject PopUpPanel;
+
+
         void Start()
         {
             // マスターサーバに接続するための処理
@@ -56,8 +59,8 @@ namespace OnlineBase
         // ルーム作成失敗
         public override void OnCreateRoomFailed(short returnCode, string message)
         {
-            Debug.Log("ルームの作成に失敗しました。");
-            // ToDo: 同一名称のルームが存在した旨のポップアップを表示する。
+            PopUp.OpenOkPopUp(PopUpPanel, "Failed to Create Room!",
+                "There is already a Room with the same Number. Pease recreate it with a different Number...");
 
         }
 
@@ -84,8 +87,9 @@ namespace OnlineBase
         public override void OnJoinRandomFailed(short returnCode, string message)
         {
             Debug.Log("ルーム入室失敗！!!");
-            // ToDo: ルーム参加可能人数に到達している旨のポップアップを表示する。
-
+            PopUp.OpenOkPopUp(PopUpPanel, "Failed to Enter the Room!",
+                "This is probably because the number of people who can enter the room has been reached or because the room does not exist. " +
+                "Please find another room.");
         }
 
         // ルームから退出した時に呼ばれるコールバック
@@ -144,8 +148,7 @@ namespace OnlineBase
         private bool IsInvalidRoomName(string RoomName)
         {
             if(!Regex.IsMatch(RoomName, "[0-9]{5,6}")) {
-                // ToDo: 有効なルーム名じゃない旨のポップアップ表示
-                Debug.Log($"有効なRoomNameじゃない!!{RoomName}");
+                PopUp.OpenOkPopUp(PopUpPanel, "Invalid Room Number!", "RoomNumber should be a five or six character number!!!");
 
                 return false;
             }
