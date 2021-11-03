@@ -3,8 +3,9 @@ using UnityEngine;
 using Gamepad.Config;
 using Hotate;
 using Common.Utils;
+using Photon.Pun;
 
-public class HotatePunch : MonoBehaviour
+public class HotatePunch : MonoBehaviourPunCallbacks
 {
     // SE
     [SerializeField] AudioClip punchVoice;
@@ -35,6 +36,10 @@ public class HotatePunch : MonoBehaviour
 
     void Update()
     {
+        //©•ª‚Ì‘€ì‚ª‘¼‚Ìƒ†[ƒU‚Ì‘€ì‚É‰e‹¿‚ğ—^‚¦‚È‚¢‚æ‚¤‚É‚·‚é
+        if (PhotonNetwork.IsConnected == true && photonView.IsMine == false)
+            return;
+
         Execute();
         if (punch_execute_flg)
         {

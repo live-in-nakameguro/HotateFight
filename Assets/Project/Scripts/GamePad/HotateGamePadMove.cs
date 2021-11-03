@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Gamepad.Config;
 using Common.Utils;
+using Photon.Pun;
 
-public class HotateGamePadMove : MonoBehaviour
+public class HotateGamePadMove : MonoBehaviourPunCallbacks
 {
     //操作したいAnimationControllerを持ったGameObjectを割り当てる
     [SerializeField]  Animator _animator;
@@ -34,6 +35,10 @@ public class HotateGamePadMove : MonoBehaviour
     //上下・左右を別でメソッドで定義する。
     void Update()
     {
+        //自分の操作が他のユーザの操作に影響を与えないようにする
+        if (PhotonNetwork.IsConnected == true && photonView.IsMine == false)
+            return;
+
         //カメラがデフォルト位置にないときの挙動
         PreventRotation();
 
