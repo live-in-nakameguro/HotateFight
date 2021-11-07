@@ -13,7 +13,17 @@ namespace CharacterSelect.Panel
         // ホタテ（ブルー）
         HotateBlue,
         // ホタテ（イエロー）
-        HotateYellow
+        HotateYellow,
+        // ホタテ（レッド）
+        HotateRed,
+        // ホタテ（グリーン）
+        HotateGreen,
+        // ホタテ（ピンク）
+        HotatePink,
+        // ホタテ（ホワイト）
+        HotateWhite,
+        // ホタテ（ブラック）
+        HotateBlack,
     }
 
     public class CharacterPanel
