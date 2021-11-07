@@ -148,7 +148,7 @@ namespace CharacterSelect.Panel
                 shootingVoice = CharacterPanel_HotateBlack.m_ShootingVoice;
                 transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Renderer>().materials[0].color = CharacterPanel_HotateBlack.characterColor;
                 transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Renderer>().materials[1].color = CharacterPanel_HotateBlack.characterColor;
-                transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Renderer>().materials[2].color = CharacterPanel_HotateBlack.characterColor;
+                // TODO ホタテダークのボディが反映されない。キレていいか？
                 transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Renderer>().materials[2].color = CharacterPanel_HotateBlack.characterBodyColor; 
                 transform.GetChild(0).gameObject.SetActive(true);
             }
