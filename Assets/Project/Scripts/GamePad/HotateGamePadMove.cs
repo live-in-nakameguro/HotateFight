@@ -32,6 +32,12 @@ public class HotateGamePadMove : MonoBehaviourPunCallbacks
     float v;
     float h;
 
+    //FloorEfect
+    float oldV;
+    bool isEffectedFloor = false;
+    string floorType = "Ground";
+    int frameCount = 0;
+
     //上下・左右を別でメソッドで定義する。
     void Update()
     {
@@ -63,6 +69,10 @@ public class HotateGamePadMove : MonoBehaviourPunCallbacks
             onGround = true;
             isFirstJumping = false;
             isSecondJumping = false;
+            if (col.gameObject.tag.Contains("Ground"))
+            {
+                floorType = col.gameObject.tag;
+            }
         }     
     }
 
@@ -102,34 +112,46 @@ public class HotateGamePadMove : MonoBehaviourPunCallbacks
 
     private void VerticalMovement()
     {
+        //床による影響
+        FloorEffects();
+
         //上下で移動
         if (HotateMovingUtils.isPressedDashDownMoving(gamepadNumber))
         {
             v = Time.deltaTime * GamepadHotateConfig.DASH_SPPED;
+            oldV = v;
+            frameCount = 0;
             _animator.SetBool("Running", true);
             ResetCameraHorizontalPosition();
         }
         else if (HotateMovingUtils.isPressedDashUpMoving(gamepadNumber))
         {
             v = -Time.deltaTime * GamepadHotateConfig.DASH_SPPED;
+            oldV = v;
+            frameCount = 0;
             _animator.SetBool("Running", true);
             ResetCameraHorizontalPosition();
         }
         else if (HotateMovingUtils.isPressedDownMoving(gamepadNumber))
         {
             v = Time.deltaTime * GamepadHotateConfig.WALK_SPPED;
+            oldV = v;
+            frameCount = 0;
             _animator.SetBool("Running", true);
             ResetCameraHorizontalPosition();
         }
         else if (HotateMovingUtils.isPressedUpMoving(gamepadNumber))
         {
             v = -Time.deltaTime * GamepadHotateConfig.WALK_SPPED;
+            oldV = v;
+            frameCount = 0;
             _animator.SetBool("Running", true);
             ResetCameraHorizontalPosition();
         }
         else
         {
             v = 0;
+            isEffectedFloor = true;
             _animator.SetBool("Running", false);
         }
 
@@ -192,5 +214,32 @@ public class HotateGamePadMove : MonoBehaviourPunCallbacks
         float abs_current_z = Mathf.Abs(current_z);
 
         transform.rotation = Quaternion.Euler(plusminus_x * abs_current_x * ( 29/30 ), current_y, plusminus_z * abs_current_z * ( 29/30 ));
+    }
+
+    private void FloorEffects()
+    {
+        if (!isEffectedFloor) return;
+
+        switch (floorType)
+        {
+            case "Ground/Ice":
+                IceFloorEfect();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void IceFloorEfect()
+    {
+        transform.position += transform.forward * oldV;
+        frameCount += 1;
+        if (frameCount >= 300)
+        {
+            isEffectedFloor = false;
+            oldV = 0;
+            frameCount = 0;
+        }
+
     }
 }
