@@ -58,7 +58,7 @@ public class HotateGamePadMove : MonoBehaviourPunCallbacks
     //OnCollisionEnter‚Í•¨‘Ì“¯Žm‚ª‚Ô‚Â‚©‚Á‚½Žž‚ÉŒÄ‚Î‚ê‚é
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "Ground" || col.gameObject.tag == "Player")
+        if (col.gameObject.tag.Contains("Ground") || col.gameObject.tag == "Player")
         {
             onGround = true;
             isFirstJumping = false;
@@ -68,7 +68,7 @@ public class HotateGamePadMove : MonoBehaviourPunCallbacks
 
     void OnCollisionExit(Collision col)
     {
-        if (col.gameObject.tag == "Ground" || col.gameObject.tag == "Player")
+        if (col.gameObject.tag.Contains("Ground") || col.gameObject.tag == "Player")
         {
             onGround = false;
             isFirstJumping = true;

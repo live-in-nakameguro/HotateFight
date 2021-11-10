@@ -56,7 +56,7 @@ namespace Item
 
         private void IsEnterGround(Collider other)
         {
-            if (other.gameObject.tag == "Ground")
+            if (other.gameObject.tag.Contains("Ground"))
             {
                 isGround = true;
             }
