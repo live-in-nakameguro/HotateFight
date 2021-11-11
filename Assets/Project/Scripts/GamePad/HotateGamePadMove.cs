@@ -18,7 +18,7 @@ public class HotateGamePadMove : MonoBehaviourPunCallbacks
     //キャラクターの操作状態を管理するフラグ
     private bool isFirstJumping = false;
     private bool isSecondJumping = false;
-    private bool onGround = true;
+    private bool onGround = false;
 
     //rigidbodyオブジェクト格納用変数
     [SerializeField] Rigidbody rb;
@@ -184,7 +184,6 @@ public class HotateGamePadMove : MonoBehaviourPunCallbacks
 
         if (HotateMovingUtils.isPressedJump(gamepadNumber))
         {
-            onGround = false;
             if (!isFirstJumping)
             {
                 isFirstJumping = true;
@@ -232,7 +231,8 @@ public class HotateGamePadMove : MonoBehaviourPunCallbacks
 
     private void IceFloorEfect()
     {
-        transform.position += transform.forward * oldV;
+        if (onGround) transform.position += transform.forward * oldV;
+
         frameCount += 1;
         if (frameCount >= 300)
         {
