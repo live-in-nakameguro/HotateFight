@@ -227,6 +227,11 @@ namespace Common.Utils
             Transparent,
         }
 
+        // 以下の実装を参考に実装（コピー）
+        // [【Unity】標準シェーダーのレンダリングモードをスクリプトから切り替える]
+        // https://tyfkda.github.io/blog/2018/08/29/unity-render-mode.html
+        // [Standard material shader ignoring SetFloat property "_Mode"?]
+        // https://forum.unity.com/threads/standard-material-shader-ignoring-setfloat-property-_mode.344557/#post-2229980
         public static void SetBlendMode(Material material, Mode blendMode)
         {
             material.SetFloat("_Mode", (float)blendMode);
