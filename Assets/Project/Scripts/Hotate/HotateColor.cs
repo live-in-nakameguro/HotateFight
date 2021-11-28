@@ -10,10 +10,10 @@ namespace Hotate
 
         public static Dictionary<int, Color> HotateColorDict = new Dictionary<int, Color>()
             {
-                { 1, new Color()},
-                { 2, new Color()},
-                { 3, new Color()},
-                { 4, new Color()},
+                { 1, new Color(0,0,0,255)},
+                { 2, new Color(0,0,0,255)},
+                { 3, new Color(0,0,0,255)},
+                { 4, new Color(0,0,0,255)},
             };
 
         // Start is called before the first frame update

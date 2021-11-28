@@ -87,7 +87,8 @@ namespace Item
                     PlaceMines.Place(hotate, ItemSetting.ItemPrefabDict[ItemSetting.Items.LandMines], muzzle);
                     break;
                 case ItemSetting.Items.StealthMode:
-                    StealthMode.Stealth(hotate);
+                    StealthMode.StealthOn(hotate);
+                    Invoke(nameof(StealthMode.StealthOff),10f);
                     break;
                 default:
                     break;
