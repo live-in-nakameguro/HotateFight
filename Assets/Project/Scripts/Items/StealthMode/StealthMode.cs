@@ -1,11 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using Common.Utils;
 
 public class StealthMode : MonoBehaviour
 {
-    public static void StealthOn(GameObject hotate)
+    GameObject hotate;
+
+    public void StealthOn(GameObject hotate)
     {
         // AudioSourceがstaticでないため、音をここで出すことができない。
 
@@ -13,29 +14,38 @@ public class StealthMode : MonoBehaviour
 
         for (int i = 0; i < skinnedMeshRenderer.materials.Length; i++)
         {
+            MaterialUtils.SetBlendMode(skinnedMeshRenderer.materials[i], MaterialUtils.Mode.Fade);
+
             skinnedMeshRenderer.materials[i].color = new Color(
-                skinnedMeshRenderer.materials[i].color.r, 
+                skinnedMeshRenderer.materials[i].color.r,
                 skinnedMeshRenderer.materials[i].color.g,
                 skinnedMeshRenderer.materials[i].color.b,
                 0);
-            skinnedMeshRenderer.materials[i].renderQueue = (int)RenderQueue.Transparent - 1;
+
+            this.hotate = hotate;
         }
     }
 
-    public static void StealthOff(GameObject hotate)
+    public void InvokeStealthOff()
+    {
+        Invoke(nameof(StealthOff), 10.0f);
+    }
+
+    private void StealthOff()
     {
         // AudioSourceがstaticでないため、音をここで出すことができない。
 
-        var skinnedMeshRenderer = hotate.GetComponent<Renderer>();
+        var skinnedMeshRenderer = this.hotate.GetComponent<Renderer>();
 
         for (int i = 0; i < skinnedMeshRenderer.materials.Length; i++)
         {
+            MaterialUtils.SetBlendMode(skinnedMeshRenderer.materials[i], MaterialUtils.Mode.Opaque);
+
             skinnedMeshRenderer.materials[i].color = new Color(
                 skinnedMeshRenderer.materials[i].color.r,
                 skinnedMeshRenderer.materials[i].color.g,
                 skinnedMeshRenderer.materials[i].color.b,
                 255);
-            skinnedMeshRenderer.materials[i].renderQueue = (int)RenderQueue.Transparent;
         }
     }
 }
