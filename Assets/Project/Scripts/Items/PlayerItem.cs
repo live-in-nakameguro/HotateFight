@@ -86,6 +86,9 @@ namespace Item
                 case ItemSetting.Items.LandMines:
                     PlaceMines.Place(hotate, ItemSetting.ItemPrefabDict[ItemSetting.Items.LandMines], muzzle);
                     break;
+                case ItemSetting.Items.Recovery:
+                    RecoveryMyHp.Recovery(hotate, ItemSetting.ItemPrefabDict[ItemSetting.Items.Recovery]);
+                    break;
                 default:
                     break;
             }
