@@ -88,7 +88,7 @@ public class HotateMove : MonoBehaviour
     //OnCollisionEnter‚Í•¨‘Ì“¯Žm‚ª‚Ô‚Â‚©‚Á‚½Žž‚ÉŒÄ‚Î‚ê‚é
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "Ground")
+        if (col.gameObject.tag.Contains("Ground"))
         {
             onGround = true;
             inJumping = false;
