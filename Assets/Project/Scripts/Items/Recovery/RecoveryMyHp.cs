@@ -6,6 +6,9 @@ namespace Item
 {
     public class RecoveryMyHp : MonoBehaviour
     {
- 
+        public static void Recovery(GameObject hotate, GameObject recovery)
+        {
+            //‰ñ•œ‚ÌŽÀ‘•
+        }
     }
 }
