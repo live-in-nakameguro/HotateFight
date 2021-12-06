@@ -48,7 +48,7 @@ namespace GameScenes.SettingAndResultBattle
         public static Dictionary<string, bool> RandomStageSettingDic = new Dictionary<string, bool>()
             {
                 //ToDo 実装したステージはコメントアウトを外すこと。 
-                //{"IceStage", true},
+                {"IceStage", true},
                 //{"MagmaStage", true},
                 //{"OceanStage", true},
                 //{"MeadowStage", true},

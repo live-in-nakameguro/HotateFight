@@ -18,7 +18,7 @@ public class HotateGamePadMove : MonoBehaviourPunCallbacks
     //キャラクターの操作状態を管理するフラグ
     private bool isFirstJumping = false;
     private bool isSecondJumping = false;
-    private bool onGround = true;
+    private bool onGround = false;
 
     //rigidbodyオブジェクト格納用変数
     [SerializeField] Rigidbody rb;
@@ -31,6 +31,12 @@ public class HotateGamePadMove : MonoBehaviourPunCallbacks
     //移動の係数格納用変数
     float v;
     float h;
+
+    //FloorEfect
+    float oldV;
+    bool isEffectedFloor = false;
+    string floorType = "Ground";
+    int frameCount = 0;
 
     //上下・左右を別でメソッドで定義する。
     void Update()
@@ -58,17 +64,21 @@ public class HotateGamePadMove : MonoBehaviourPunCallbacks
     //OnCollisionEnterは物体同士がぶつかった時に呼ばれる
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "Ground" || col.gameObject.tag == "Player")
+        if (col.gameObject.tag.Contains("Ground") || col.gameObject.tag == "Player")
         {
             onGround = true;
             isFirstJumping = false;
             isSecondJumping = false;
+            if (col.gameObject.tag.Contains("Ground"))
+            {
+                floorType = col.gameObject.tag;
+            }
         }     
     }
 
     void OnCollisionExit(Collision col)
     {
-        if (col.gameObject.tag == "Ground" || col.gameObject.tag == "Player")
+        if (col.gameObject.tag.Contains("Ground") || col.gameObject.tag == "Player")
         {
             onGround = false;
             isFirstJumping = true;
@@ -102,34 +112,46 @@ public class HotateGamePadMove : MonoBehaviourPunCallbacks
 
     private void VerticalMovement()
     {
+        //床による影響
+        FloorEffects();
+
         //上下で移動
         if (HotateMovingUtils.isPressedDashDownMoving(gamepadNumber))
         {
             v = Time.deltaTime * GamepadHotateConfig.DASH_SPPED;
+            oldV = v;
+            frameCount = 0;
             _animator.SetBool("Running", true);
             ResetCameraHorizontalPosition();
         }
         else if (HotateMovingUtils.isPressedDashUpMoving(gamepadNumber))
         {
             v = -Time.deltaTime * GamepadHotateConfig.DASH_SPPED;
+            oldV = v;
+            frameCount = 0;
             _animator.SetBool("Running", true);
             ResetCameraHorizontalPosition();
         }
         else if (HotateMovingUtils.isPressedDownMoving(gamepadNumber))
         {
             v = Time.deltaTime * GamepadHotateConfig.WALK_SPPED;
+            oldV = v;
+            frameCount = 0;
             _animator.SetBool("Running", true);
             ResetCameraHorizontalPosition();
         }
         else if (HotateMovingUtils.isPressedUpMoving(gamepadNumber))
         {
             v = -Time.deltaTime * GamepadHotateConfig.WALK_SPPED;
+            oldV = v;
+            frameCount = 0;
             _animator.SetBool("Running", true);
             ResetCameraHorizontalPosition();
         }
         else
         {
             v = 0;
+            isEffectedFloor = true;
             _animator.SetBool("Running", false);
         }
 
@@ -162,7 +184,6 @@ public class HotateGamePadMove : MonoBehaviourPunCallbacks
 
         if (HotateMovingUtils.isPressedJump(gamepadNumber))
         {
-            onGround = false;
             if (!isFirstJumping)
             {
                 isFirstJumping = true;
@@ -192,5 +213,33 @@ public class HotateGamePadMove : MonoBehaviourPunCallbacks
         float abs_current_z = Mathf.Abs(current_z);
 
         transform.rotation = Quaternion.Euler(plusminus_x * abs_current_x * ( 29/30 ), current_y, plusminus_z * abs_current_z * ( 29/30 ));
+    }
+
+    private void FloorEffects()
+    {
+        if (!isEffectedFloor) return;
+
+        switch (floorType)
+        {
+            case "Ground/Ice":
+                IceFloorEfect();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void IceFloorEfect()
+    {
+        if (onGround) transform.position += transform.forward * oldV;
+
+        frameCount += 1;
+        if (frameCount >= 300)
+        {
+            isEffectedFloor = false;
+            oldV = 0;
+            frameCount = 0;
+        }
+
     }
 }
