@@ -86,6 +86,13 @@ namespace Item
                 case ItemSetting.Items.LandMines:
                     PlaceMines.Place(hotate, ItemSetting.ItemPrefabDict[ItemSetting.Items.LandMines], muzzle);
                     break;
+                case ItemSetting.Items.StealthMode:
+                    // staticの対応の場合、Invokeの使用ができないため、以下のように対応。
+                    // 本スクリプトと同じオブジェクト階層に設置して、GetComponentで取得する。
+                    var stealthMode = gameObject.GetComponent<StealthMode>();
+                    stealthMode.StealthOn(hotate);
+                    stealthMode.InvokeStealthOff();
+                    break;
                 default:
                     break;
             }

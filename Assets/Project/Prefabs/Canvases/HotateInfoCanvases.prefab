@@ -278,6 +278,7 @@ GameObject:
   - component: {fileID: 444361064372623162}
   - component: {fileID: 444361064372623157}
   - component: {fileID: 444361064372623166}
+  - component: {fileID: 3376067599557219359}
   m_Layer: 5
   m_Name: Canvas_player2
   m_TagString: Untagged
@@ -395,6 +396,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamepadNumber: 2
   image: {fileID: 444361064060268535}
+  hotate: {fileID: 0}
+  muzzle: {fileID: 0}
+--- !u!114 &3376067599557219359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444361064372623156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2cc6120c70480d49964b1b2acc7d8f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &444361064529942508
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,6 +579,7 @@ GameObject:
   - component: {fileID: 444361064762763489}
   - component: {fileID: 444361064762763493}
   - component: {fileID: 444361064762763498}
+  - component: {fileID: 229927384070275063}
   m_Layer: 5
   m_Name: Canvas_player1
   m_TagString: Untagged
@@ -681,6 +697,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamepadNumber: 1
   image: {fileID: 444361065073366271}
+  hotate: {fileID: 0}
+  muzzle: {fileID: 0}
+--- !u!114 &229927384070275063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444361064762763488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2cc6120c70480d49964b1b2acc7d8f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &444361064932211493
 GameObject:
   m_ObjectHideFlags: 0
@@ -1235,6 +1265,7 @@ GameObject:
   - component: {fileID: 444361065541994799}
   - component: {fileID: 444361065541994798}
   - component: {fileID: 444361065541994770}
+  - component: {fileID: 1078859788635294863}
   m_Layer: 5
   m_Name: Canvas_player4
   m_TagString: Untagged
@@ -1352,6 +1383,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamepadNumber: 4
   image: {fileID: 444361064088793705}
+  hotate: {fileID: 0}
+  muzzle: {fileID: 0}
+--- !u!114 &1078859788635294863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444361065541994792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2cc6120c70480d49964b1b2acc7d8f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &444361065806486246
 GameObject:
   m_ObjectHideFlags: 0
@@ -1445,6 +1490,7 @@ GameObject:
   - component: {fileID: 444361065924252300}
   - component: {fileID: 444361065924252303}
   - component: {fileID: 444361065924252019}
+  - component: {fileID: 6891396498841082563}
   m_Layer: 5
   m_Name: Canvas_player3
   m_TagString: Untagged
@@ -1562,3 +1608,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamepadNumber: 3
   image: {fileID: 444361065311472952}
+  hotate: {fileID: 0}
+  muzzle: {fileID: 0}
+--- !u!114 &6891396498841082563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444361065924252297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2cc6120c70480d49964b1b2acc7d8f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

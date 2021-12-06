@@ -66,6 +66,7 @@ namespace GameScenes.SettingAndResultBattle
             None,
             Bomb,           // 爆弾
             LandMines,      // 地雷
+            StealthMode,    // 透明化
         }
 
         // falseの時、ステージにアイテムを表示しない
@@ -76,6 +77,7 @@ namespace GameScenes.SettingAndResultBattle
                 { Items.None, false},
                 { Items.Bomb, true},
                 { Items.LandMines, true},
+                { Items.StealthMode, true},
             };
 
         public static Dictionary<Items, Sprite> ItemTextureDict = new Dictionary<Items, Sprite>()
@@ -83,6 +85,7 @@ namespace GameScenes.SettingAndResultBattle
                 { Items.None, null},
                 { Items.Bomb, Resources.Load<Sprite>("Items/Textures/Bomb")},
                 { Items.LandMines, Resources.Load<Sprite>("Items/Textures/LandMines")},
+                { Items.StealthMode, Resources.Load<Sprite>("Items/Textures/StealthMode")},
             };
 
         public static Dictionary<Items, GameObject> ItemPrefabDict = new Dictionary<Items, GameObject>()
@@ -90,6 +93,7 @@ namespace GameScenes.SettingAndResultBattle
                 { Items.None, null},
                 { Items.Bomb, Resources.Load<GameObject>("Items/Prefabs/Bomb")},
                 { Items.LandMines, Resources.Load<GameObject>("Items/Prefabs/LandMines")},
+                { Items.StealthMode, null},
             };
 
         public static Dictionary<Items, AudioClip> ItemAudioClipDict = new Dictionary<Items, AudioClip>()
@@ -97,6 +101,7 @@ namespace GameScenes.SettingAndResultBattle
                 { Items.None, null},
                 { Items.Bomb, Resources.Load<AudioClip>("Items/AudioClip/kazuki_freekick")},
                 { Items.LandMines, null},
+                { Items.StealthMode, null},
             };
     }
 
